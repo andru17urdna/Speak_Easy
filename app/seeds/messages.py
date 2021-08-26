@@ -22,6 +22,27 @@ message3 = Message(
     from_user_id = 3
 )
 
+message4 = Message(
+    text = "Whaddup Tony, did you hide the body?",
+    invite = True,
+    to_user_id = 2,
+    from_user_id = 1
+)
+
+message5 = Message(
+    text = "The body is hidden",
+    invite = True,
+    to_user_id = 2,
+    from_user_id = 1
+)
+
+message6 = Message(
+    text = "Good. I hope that we do not get found it",
+    invite = True,
+    to_user_id = 2,
+    from_user_id = 1
+)
+
 def seed_messages():
     message_list = [message1, message2, message3 ]
     for message in message_list:

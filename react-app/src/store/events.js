@@ -1,7 +1,6 @@
 const GET_ALL_EVENTS = "events/GET_ALL_EVENTS"
 const CREATE_EVENT = "events/CREATE_EVENT"
 const DELETE_EVENT = "events/DELETE_EVENT"
-const EDIT_EVENT = "events/EDIT_EVENT"
 
 const getAllEvents = (events) => ({
     type: GET_ALL_EVENTS,
@@ -13,7 +12,7 @@ const createEvent = (event) => ({
     payload: event
 })
 
-const editEvent = ({})
+
 
 const deleteEvent = (id) => ({
     type: DELETE_EVENT,
@@ -33,20 +32,20 @@ export const getAllEventsThunk = () => async (dispatch) => {
 }
 
 export const createEventThunk = (payload) => async (dispatch) => {
-    const response = await fetch("/api/events", {
+    const response = await fetch("/api/events/", {
         method: "POST",
         headers: {
             "Content-Type": "application/json",
         },
         body: JSON.stringify(payload)
     })
-
+        console.log(response, 'response from server')
     if (response.ok) {
         const data = await response.json();
         if (data.errors) {
+            console.log(data.errors)
             return data;
         }
-        console.log(data, "DATA")
         dispatch(createEvent(data))
         return data
     }
@@ -64,9 +63,10 @@ export const editEventThunk = (payload, id) => async (dispatch) => {
     if (response.ok) {
         const data = await response.json();
         if (data.errors) {
+            console.log(data.errors)
             return data
         }
-        dispatch()
+        dispatch(createEvent(data.event))
     }
 }
 
@@ -83,7 +83,7 @@ export const deleteEventThunk = (id) => async (dispatch) => {
     }
 }
 
-const initialState = [];
+const initialState = {};
 
 export default function eventsReducer(state = initialState, action) {
     // Object.freeze(state);
@@ -91,10 +91,12 @@ export default function eventsReducer(state = initialState, action) {
         case GET_ALL_EVENTS:
             return action.payload
         case DELETE_EVENT:
-            const newDeleteState = [...state]
-            console.log(action.payload)
+            const newDeleteState = {...state}
             delete newDeleteState[action.payload]
             return newDeleteState
+        case CREATE_EVENT:
+            const newCreateState = {...state, [action.payload.id]: action.payload}
+            return newCreateState
         default:
             return state
     }
