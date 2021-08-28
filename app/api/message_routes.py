@@ -60,16 +60,17 @@ def delete_message(id):
     message = Message.query.get_or_404(id)
     db.session.delete(message)
     db.session.commit();
-    return{'message_id': message.id}
+    return{"message_id": message.id, "currentUser": current_user.id}
 
 
 
 @message_routes.route('/users/<int:id>')
 def get_oneusers_messages(id):
+
     to_user_messages = Message.query.filter(Message.to_user_id == id).all()
-    from_user_messages =Message.query.filter(Message.from_user_id == id).all()
+    from_user_messages = Message.query.filter(Message.from_user_id == id).all()
 
 
-    if (to_user_messages and from_user_messages):
-        return {'to_user_messages': {message.id: message.to_dict() for message in to_user_messages},
-                'from_user_messages': {message.id: message.to_dict() for message in from_user_messages}}
+
+    return {'to_user_messages': {message.id: message.to_dict() for message in to_user_messages},
+            'from_user_messages': {message.id: message.to_dict() for message in from_user_messages}}

@@ -5,7 +5,7 @@ import LogoutButton from './auth/LogoutButton';
 import { useSelector, useDispatch } from 'react-redux';
 import { getMessagesByUser } from '../store/UserInfo';
 import { createMessageThunk } from '../store/messages';
-
+import CreateNotification from './CreateNotification';
 import Notification from './Notification';
 
 const NavBar = () => {
@@ -15,22 +15,9 @@ const NavBar = () => {
     const user = useSelector(state => state.session.user)
     const messagesToCurrentUser = useSelector(state => state.userInfo.toUserMessages)
     const messagesFromCurrentUser = useSelector(state => state.userInfo.fromUserMessages)
-    console.log(messagesToCurrentUser)
-    console.log(messagesFromCurrentUser,'dfljsdljsdfiosd')
 
-    const handleMessageCreation = async (e) => {
-      e.preventDefault();
-      const data = {
-              text: "Sadly Bradley is no longer with us",
-              to_user_id: 2,
-              invite: false
-      }
 
-          if (data) {
-          await dispatch(createMessageThunk(data))
-      }
-  }
-
+    console.log(user.id)
 
     useEffect(() => {
         if (user) {
@@ -66,15 +53,23 @@ const NavBar = () => {
           <LogoutButton />
         </li>
       </ul>
+      {user && (
       <div>
-      <div><button onClick={handleMessageCreation}>CREATE MESSAGE</button></div>
+        <h1>====================== Messages To Current User =================== </h1>
+      <div><CreateNotification /></div>
       {messagesToCurrentUser && Object.values(messagesToCurrentUser).map(message =>(
+        <div key={message.id}>
+          <Notification message={message}  />
+        </div>
+      ))}
+      <h1>====================== Messages From Current User =================== </h1>
+      {messagesFromCurrentUser && Object.values(messagesFromCurrentUser).reverse().map(message => (
         <div key={message.id}>
           <Notification message={message} />
         </div>
-
       ))}
       </div>
+      )}
     </nav>
   );
 }

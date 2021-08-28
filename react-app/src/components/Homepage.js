@@ -76,9 +76,6 @@ const handleEditMessage = async (e) => {
         dispatch(getAllEventsThunk())
     }, [dispatch]);
 
-    useEffect(() => {
-        dispatch(getAllMessagesThunk())
-    }, [dispatch]);
 
 
     return (
@@ -94,7 +91,7 @@ const handleEditMessage = async (e) => {
                 </div>
             ))}
             <button onClick={handleEditMessage}>EDIT</button>
-            
+
             {events && Object.values(events).map(event => (
                 <div key={event.id}>
                     <h1>{event.event_title}</h1>

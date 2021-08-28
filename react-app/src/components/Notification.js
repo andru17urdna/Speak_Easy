@@ -24,9 +24,10 @@ const Notification = ({message}) => {
   return (
       <>
         <h2>From: {message.from_username}</h2>
+        <h2>Message ID: {message.id}</h2>
         <h3>Message: {message.text}</h3>
         <p>Sent: {message.created_at}</p>
-        <button onClick={() => dispatch(deleteMessageThunk(message.id))}>DELETE</button>
+        <button onClick={() => dispatch(deleteMessageThunk(message.id, message.from_user_id))}>DELETE</button>
         <button onClick={() => setShowEditField((prevState) => !prevState)}>EDIT</button>
         {showEditField && (
             <div>

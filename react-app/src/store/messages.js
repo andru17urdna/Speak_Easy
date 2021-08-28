@@ -1,4 +1,4 @@
-import { deleteUserMessages, createUserMessage } from "./UserInfo"
+import { deleteMessagesFromUser, deleteMessagesToUser, createUserMessage } from "./UserInfo"
 const GET_ALL_MESSAGES = "messages/GET_ALL_MESSAGES"
 const CREATE_MESSAGE = "messages/CREATE_MESSAGE"
 const DELETE_MESSAGE = "messages/DELETE_MESSAGE"
@@ -71,7 +71,6 @@ export const editMessageThunk = (payload, id) => async (dispatch) => {
     if (response.ok) {
         const data = await response.json();
         if (data.errors) {
-            console.log(data.errors)
             return data
         }
         dispatch(createMessage(data.message))
@@ -79,17 +78,27 @@ export const editMessageThunk = (payload, id) => async (dispatch) => {
 }
 
 
-export const deleteMessageThunk = (id) => async (dispatch) => {
+export const deleteMessageThunk = (id, userId) => async (dispatch) => {
+    console.log(userId)
     const response = await fetch(`/api/messages/${id}`, {
         method: "DELETE",
     });
     if (response.ok) {
         const data = await response.json()
+        console.log(data)
         if(data.errors) {
             return
         }
         dispatch(deleteMessage(id))
-        dispatch(deleteUserMessages(id))
+        console.log(data.currentUser, userId, '<++++++++++++++++++++++++++++HEHERHREHRHERHEEHRHRERHR')
+        if (data.currentUser === userId) {
+            console.log("I'm here yo")
+            dispatch(deleteMessagesFromUser(id))
+        }
+        else {
+            console.log("IM HERE")
+            dispatch(deleteMessagesToUser(id))
+        }
     }
 }
 
