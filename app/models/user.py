@@ -62,10 +62,6 @@ class Message(db.Model):
     updated_at = db.Column(db.DateTime(timezone=True),
                           nullable=False, server_default=func.now(), onupdate=func.now())
 
-
-
-
-
     def to_dict(self):
         return {
             'id': self.id,
@@ -73,6 +69,8 @@ class Message(db.Model):
             'invite': self.invite,
             'to_user_id': self.to_user_id,
             'from_user_id': self.from_user_id,
+            'from_username': self.message_from.username,
+            'to_username': self.message_to.username,
             'created_at': self.created_at,
             'updated_at': self.updated_at
         }

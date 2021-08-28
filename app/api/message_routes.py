@@ -1,3 +1,4 @@
+from app.models.user import User
 from flask import Blueprint, jsonify, request
 from app.models import db, Message
 from app.forms.message_form import MessageForm
@@ -61,7 +62,14 @@ def delete_message(id):
     db.session.commit();
     return{'message_id': message.id}
 
-@message_routes.route('/<int:id>')
-def get_one_message(id):
-    message = Message.query.get(id)
-    return message.to_dict()
+
+
+@message_routes.route('/users/<int:id>')
+def get_oneusers_messages(id):
+    to_user_messages = Message.query.filter(Message.to_user_id == id).all()
+    from_user_messages =Message.query.filter(Message.from_user_id == id).all()
+
+
+    if (to_user_messages and from_user_messages):
+        return {'to_user_messages': {message.id: message.to_dict() for message in to_user_messages},
+                'from_user_messages': {message.id: message.to_dict() for message in from_user_messages}}

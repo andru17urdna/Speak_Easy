@@ -1,12 +1,15 @@
+import { deleteUserMessages, createUserMessage } from "./UserInfo"
 const GET_ALL_MESSAGES = "messages/GET_ALL_MESSAGES"
 const CREATE_MESSAGE = "messages/CREATE_MESSAGE"
 const DELETE_MESSAGE = "messages/DELETE_MESSAGE"
+
 
 
 const getAllMessages = (messages) => ({
     type: GET_ALL_MESSAGES,
     payload: messages
 })
+
 
 const createMessage = (message) => ({
     type: CREATE_MESSAGE,
@@ -32,7 +35,10 @@ export const getAllMessagesThunk = () => async (dispatch) => {
 }
 
 
+
+
 export const createMessageThunk = (payload) => async (dispatch) => {
+    console.log(payload)
     const response = await fetch("api/messages/", {
         method: "POST",
         headers: {
@@ -47,12 +53,13 @@ export const createMessageThunk = (payload) => async (dispatch) => {
             console.log(data.errors)
             return data;
         }
-        dispatch(createMessage(data.message))
+        console.log(data.message, "messages thunk")
+        await dispatch(createUserMessage(data.message))
+        await dispatch(createMessage(data.message))
     }
 }
 
 export const editMessageThunk = (payload, id) => async (dispatch) => {
-    console.log(payload, "EDIT MESSAGE PAYLOAD")
     const response = await fetch(`/api/messages/${id}`, {
         method: "PUT",
         headers: {
@@ -73,7 +80,6 @@ export const editMessageThunk = (payload, id) => async (dispatch) => {
 
 
 export const deleteMessageThunk = (id) => async (dispatch) => {
-    console.log(id)
     const response = await fetch(`/api/messages/${id}`, {
         method: "DELETE",
     });
@@ -83,8 +89,11 @@ export const deleteMessageThunk = (id) => async (dispatch) => {
             return
         }
         dispatch(deleteMessage(id))
+        dispatch(deleteUserMessages(id))
     }
 }
+
+
 
 
 

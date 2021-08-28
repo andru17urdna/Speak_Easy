@@ -19,6 +19,8 @@ const deleteEvent = (id) => ({
     payload: id
 })
 
+
+
 export const getAllEventsThunk = () => async (dispatch) => {
     const response = await fetch("/api/events");
 

@@ -3,11 +3,13 @@ import thunk from 'redux-thunk';
 import session from './session'
 import eventsReducer from './events';
 import messagesReducer from './messages';
+import userInfoReducer from './UserInfo';
 
 const rootReducer = combineReducers({
   session,
   events: eventsReducer,
-  messages: messagesReducer
+  messages: messagesReducer,
+  userInfo: userInfoReducer
 });
 
 

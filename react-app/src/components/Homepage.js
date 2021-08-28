@@ -26,7 +26,7 @@ function Homepage() {
             if (data) {
             await dispatch(createEventThunk(data))
         }
-        // dispatch(getAllEventsThunk())
+
     }
 
     const handleEditEvent = async (e) => {
@@ -43,25 +43,13 @@ function Homepage() {
             await dispatch(editEventThunk(data, 1))
 
         }
-        
+
     }
 
 
 // =======================================MESSAGES===================================
 
-const handleMessageCreation = async ( e ) => {
-    e.preventDefault();
-    const data = {
-            text: "Sadly Bradley is no longer with us",
-            to_user_id: 2,
-            invite: false
-    }
 
-        if (data) {
-        await dispatch(createMessageThunk(data))
-    }
-    dispatch(getAllMessagesThunk())
-}
 
 
 const handleEditMessage = async (e) => {
@@ -95,7 +83,7 @@ const handleEditMessage = async (e) => {
 
     return (
         <div>
-            {messages && Object.entries(messages).map(([key, message]) => (
+            {/* {messages && Object.values(messages).map(message => (
                 <div key={message.id}>
                     <h1>From User</h1>
                     <p>{message.from_user_id}</p>
@@ -106,8 +94,8 @@ const handleEditMessage = async (e) => {
                 </div>
             ))}
             <button onClick={handleEditMessage}>EDIT</button>
-            <div><button onClick={handleMessageCreation}>CREATE MESSAGE</button></div>
-            {events && Object.entries(events).map(([key, event]) => (
+            
+            {events && Object.values(events).map(event => (
                 <div key={event.id}>
                     <h1>{event.event_title}</h1>
                     <p>{event.description}</p>
@@ -115,7 +103,7 @@ const handleEditMessage = async (e) => {
                     <button value={event.id} onClick={handleEditMessage}>EDIT</button>
                 </div>
             ))}
-            <button onClick={handleEventCreation}>CREATE</button>
+            <button onClick={handleEventCreation}>CREATE</button> */}
         </div>
     );
   }
