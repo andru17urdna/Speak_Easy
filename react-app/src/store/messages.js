@@ -1,4 +1,8 @@
 import { deleteMessagesFromUser, deleteMessagesToUser, createUserMessage } from "./UserInfo"
+
+
+
+
 const GET_ALL_MESSAGES = "messages/GET_ALL_MESSAGES"
 const CREATE_MESSAGE = "messages/CREATE_MESSAGE"
 const DELETE_MESSAGE = "messages/DELETE_MESSAGE"
@@ -53,7 +57,6 @@ export const createMessageThunk = (payload) => async (dispatch) => {
             console.log(data.errors)
             return data;
         }
-        console.log(data.message, "messages thunk")
         await dispatch(createUserMessage(data.message))
         await dispatch(createMessage(data.message))
     }
@@ -92,11 +95,9 @@ export const deleteMessageThunk = (id, userId) => async (dispatch) => {
         dispatch(deleteMessage(id))
         console.log(data.currentUser, userId, '<++++++++++++++++++++++++++++HEHERHREHRHERHEEHRHRERHR')
         if (data.currentUser === userId) {
-            console.log("I'm here yo")
             dispatch(deleteMessagesFromUser(id))
         }
         else {
-            console.log("IM HERE")
             dispatch(deleteMessagesToUser(id))
         }
     }

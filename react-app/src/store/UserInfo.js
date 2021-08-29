@@ -74,11 +74,16 @@ export const editUserMessages = (messageData) => (dispatch) => {
 
 
 const GET_USER_EVENTS = "events/GET_USER_EVENTS"
-
+const CREATE_USER_EVENT = "events/CREATE_EVENT"
 
 const getUserEvents = (userEventData) => ({
     type: GET_USER_EVENTS,
     userEventData
+})
+
+const createUserEvent = (event) => ({
+    type: CREATE_USER_EVENT,
+    payload: event
 })
 
 
@@ -92,10 +97,9 @@ export const getEventsByUser = (id) => async (dispatch) => {
 	}
 }
 
-
-
-
-
+export const createUserEventThunk = (data) => async (dispatch) => {
+    dispatch(createUserEvent(data))
+}
 
 
 const initialState = { toUserMessages: {},
@@ -122,7 +126,6 @@ export default function userInfoReducer(state = initialState, action) {
             toUserMessages: {...state.toUserMessages},
             fromUserMessages: {...state.fromUserMessages},
             userEvents: {...state.userEvents}}
-            console.log(action.userEventData, "WORK")
             newUserEventsState.userEvents = action.userEventData
             return newUserEventsState
 
@@ -131,10 +134,17 @@ export default function userInfoReducer(state = initialState, action) {
 // ===================CREATE USER INFO=======================================
         case CREATE_MESSAGE:
             const newCreateState = {
-                toUserMessages: {...state.toUserMessages},
-                fromUserMessages: {...state.fromUserMessages, [action.payload.id]:action.payload},
-                userEvents: {...state.userEvents}}
-            return newCreateState
+            toUserMessages: {...state.toUserMessages},
+            fromUserMessages: {...state.fromUserMessages, [action.payload.id]:action.payload},
+            userEvents: {...state.userEvents}}
+            return newCreateState;
+        case CREATE_USER_EVENT:
+            const newEventCreateState = {
+            toUserMessages: {...state.toUserMessages},
+            fromUserMessages: {...state.fromUserMessages},
+            userEvents: {...state.userEvents, [action.payload.id]:action.payload}
+            }
+            return newEventCreateState;
 
 
 

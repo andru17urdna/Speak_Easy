@@ -1,3 +1,6 @@
+import { createUserEventThunk } from "./UserInfo"
+
+
 const GET_ALL_EVENTS = "events/GET_ALL_EVENTS"
 const CREATE_EVENT = "events/CREATE_EVENT"
 const DELETE_EVENT = "events/DELETE_EVENT"
@@ -49,6 +52,7 @@ export const createEventThunk = (payload) => async (dispatch) => {
             return data;
         }
         dispatch(createEvent(data))
+        dispatch(createUserEventThunk(data))
         return data
     }
 }
