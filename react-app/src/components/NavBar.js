@@ -4,9 +4,11 @@ import { NavLink } from 'react-router-dom';
 import LogoutButton from './auth/LogoutButton';
 import { useSelector, useDispatch } from 'react-redux';
 import { getMessagesByUser } from '../store/UserInfo';
+import { getEventsByUser } from '../store/UserInfo';
 import { createMessageThunk } from '../store/messages';
 import CreateNotification from './CreateNotification';
 import Notification from './Notification';
+import EventTower from './EventTower';
 
 const NavBar = () => {
 
@@ -15,15 +17,15 @@ const NavBar = () => {
     const user = useSelector(state => state.session.user)
     const messagesToCurrentUser = useSelector(state => state.userInfo.toUserMessages)
     const messagesFromCurrentUser = useSelector(state => state.userInfo.fromUserMessages)
-
-
-    console.log(user.id)
-
+    const currentUserEvents = useSelector(state => state.userInfo.userEvents)
     useEffect(() => {
         if (user) {
+            console.log(user)
             dispatch(getMessagesByUser(user.id))
+            dispatch(getEventsByUser(user.id))
         }
     }, [dispatch])
+
 
 
   return (
@@ -56,20 +58,30 @@ const NavBar = () => {
       {user && (
       <div>
         <h1>====================== Messages To Current User =================== </h1>
-      <div><CreateNotification /></div>
-      {messagesToCurrentUser && Object.values(messagesToCurrentUser).map(message =>(
-        <div key={message.id}>
-          <Notification message={message}  />
+        <div><CreateNotification /></div>
+        {messagesToCurrentUser && Object.values(messagesToCurrentUser).map(message =>(
+          <div key={message.id}>
+            <Notification message={message}  />
+          </div>
+        ))}
+        <h1>====================== Messages From Current User =================== </h1>
+        {messagesFromCurrentUser && Object.values(messagesFromCurrentUser).reverse().map(message => (
+          <div key={message.id}>
+            <Notification message={message} />
+          </div>
+        ))}
+
+        <div>
+          <h1>====================== Events From Current User =================== </h1>
+          {currentUserEvents && Object.values(currentUserEvents).map(userEvent => (
+            <div key={userEvent.id}>
+              <EventTower userEvent={userEvent} />
+            </div>
+          ))}
         </div>
-      ))}
-      <h1>====================== Messages From Current User =================== </h1>
-      {messagesFromCurrentUser && Object.values(messagesFromCurrentUser).reverse().map(message => (
-        <div key={message.id}>
-          <Notification message={message} />
-        </div>
-      ))}
+
       </div>
-      )}
+        )}
     </nav>
   );
 }
