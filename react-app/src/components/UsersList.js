@@ -3,7 +3,6 @@ import { NavLink } from 'react-router-dom';
 
 function UsersList() {
   const [users, setUsers] = useState([]);
-
   useEffect(() => {
     async function fetchData() {
       const response = await fetch('/api/users/');
