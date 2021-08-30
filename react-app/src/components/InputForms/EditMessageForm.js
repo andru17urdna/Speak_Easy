@@ -4,15 +4,14 @@ import { useHistory } from "react-router-dom";
 import { editMessageThunk } from "../../store/messages";
 
 
-const EditNotification = (props) => {
+const EditNotification = (message) => {
 	const [errors, setErrors] = useState([]);
 	const [text, setText] = useState("");
 	const [invite, setInvite] = useState(false);
 	const [disabledSubmitButton, setDisabledSubmitButton] = useState(false);
     const [users, setUsers] = useState([]);
 
-	const message = props.message
-	const setShowEditField = props.showEditField
+	
 	const dispatch = useDispatch();
 
 

@@ -43,7 +43,7 @@ const Notification = ({message}) => {
           }
         {showEditField && (
           <div>
-                <EditNotification message={message} setShowEditField={setShowEditField}/>
+                <EditNotification message={message} />
                 <button onClick={() => dispatch(deleteMessageThunk(message.id, message.from_user_id))}>DELETE</button>
             </div>
         )}

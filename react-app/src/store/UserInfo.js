@@ -34,10 +34,6 @@ const deleteMessageToUser = (id) => ({
 
 
 
-
-
-
-
 export const getMessagesByUser = (id) => async (dispatch) => {
     const response = await fetch(`/api/messages/users/${id}`)
 
