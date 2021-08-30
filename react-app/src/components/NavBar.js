@@ -9,6 +9,7 @@ import { createMessageThunk } from '../store/messages';
 import CreateNotification from './CreateNotification';
 import Notification from './Notification';
 import EventTower from './EventTower';
+import CreateEvent from './CreateEvent';
 
 const NavBar = () => {
 
@@ -57,6 +58,7 @@ const NavBar = () => {
       </ul>
       {user && (
       <div>
+        <div><CreateEvent /></div>
         <h1>====================== Messages To Current User =================== </h1>
         <div><CreateNotification /></div>
         {messagesToCurrentUser && Object.values(messagesToCurrentUser).map(message =>(

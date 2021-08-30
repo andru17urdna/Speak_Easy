@@ -3,17 +3,27 @@ import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { NavLink } from 'react-router-dom';
 import { deleteMessageThunk } from '../store/messages';
-
+import EditNotification  from './InputForms/EditMessageForm'
 
 const Notification = ({message}) => {
     const dispatch = useDispatch();
 
 
     const [showEditField, setShowEditField] = useState(false);
+    const user = useSelector(state => state.session.user)
+
+    console.log(message)
 
 
+    useEffect(() => {
+      if (user) {
+        console.log(message.from_user_id)
+        if (message.from_user_id === user.id) {
+        }
 
 
+      }
+  }, [dispatch])
 
 
 
@@ -27,12 +37,14 @@ const Notification = ({message}) => {
         <h2>Message ID: {message.id}</h2>
         <h3>Message: {message.text}</h3>
         <p>Sent: {message.created_at}</p>
-        <button onClick={() => dispatch(deleteMessageThunk(message.id, message.from_user_id))}>DELETE</button>
+
+        {(message.from_user_id === user.id) &&
         <button onClick={() => setShowEditField((prevState) => !prevState)}>EDIT</button>
+          }
         {showEditField && (
-            <div>
-                <p>LOOK AT ME IMMA REAL fish</p>
-                <button onClick={() => setShowEditField((prevState) => !prevState)}>2ND BUTTTON</button>
+          <div>
+                <EditNotification message={message} setShowEditField={setShowEditField}/>
+                <button onClick={() => dispatch(deleteMessageThunk(message.id, message.from_user_id))}>DELETE</button>
             </div>
         )}
       </>

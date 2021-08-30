@@ -1,38 +1,20 @@
 import React, { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { useHistory } from "react-router-dom";
-import { createMessageThunk } from "../store/messages";
+import { createEventThunk } from "../store/events";
 
 
 const CreateEvent = () => {
 	const [errors, setErrors] = useState([]);
-	const [text, setText] = useState("");
-	const [to_user_id, setToUserId] = useState(null);
-	const [invite, setInvite] = useState(false);
-	const [disabledSubmitButton, setDisabledSubmitButton] = useState(false);
-    const [users, setUsers] = useState([]);
+	const [event_title, setEventTitle] = useState("");
+	const [description, setDescription] = useState("");
+	const [event_img, setEventImg] = useState("");
+	const [event_date, setEventDateTime] = useState("08/25/2022 22:52:03");
+	const [private_event, setPrivateEvent] = useState(false);
 
 
 	const dispatch = useDispatch();
 	const history = useHistory();
-
-
-
-        useEffect(() => {
-            async function fetchData() {
-            const response = await fetch('/api/users/');
-            const responseData = await response.json();
-            setUsers(responseData.users);
-            }
-            fetchData();
-        }, []);
-
-        // console.log(users, "LIST OF USERS")
-
-
-
-
-	// const imageFileEndings = ["pdf", "png", "jpg", "jpeg", "gif"];
 
 
 	// const handleOptionClick = (e) => {
@@ -53,21 +35,18 @@ const CreateEvent = () => {
 
 
 		const data = {
-			text,
-			to_user_id,
-			invite
+			event_title,
+			description,
+			event_img,
+            event_date,
+            private_event
 		};
 
 
+    
         if (data) {
-                const messageData = await dispatch(createMessageThunk(data));
-
-
-            }
-        // console.log(messageData.errors)
-		// if (messageData.errors) {
-        //     setErrors(messageData.errors)
-        // }
+            const eventData = await dispatch(createEventThunk(data));
+        }
     };
 
 
@@ -78,36 +57,53 @@ const CreateEvent = () => {
 					<div key={ind}>{error}</div>
 				))}
 
-				<label htmlFor="">To User: </label>
-				<select
-					name="users"
-					onChange={(e) => setToUserId(e.target.value)}
-					defaultValue="Select Users"
-				>
-					<option disabled>Select Users</option>
-					{users.map((user) => (
-                        <option key={user.id} value={user.id}>
-							{user.user_name}
-						</option>
-					))}
-				</select>
 
-				<label htmlFor="text">Text</label>
+				<label htmlFor="title">Event Title</label>
 				<input
-					name="text"
+					name="title"
 					type="text"
-					placeholder="Your Message Here"
-					value={text}
+					placeholder="Title of Event"
+					value={event_title}
 					required
 					onChange={(e) => {
-						setText(e.target.value);
+						setEventTitle(e.target.value);
 					}}
 				/>
+
+				<label htmlFor="description">Description</label>
+				<input
+					name="description"
+					type="text"
+					placeholder="Event Description Here"
+					value={description}
+					required
+					onChange={(e) => {
+						setDescription(e.target.value);
+					}}
+				/>
+				<label htmlFor="event-img">Event Image</label>
+				<input
+					name="event-img"
+					type="text"
+					placeholder="URL link to image"
+					value={event_img}
+					required
+					onChange={(e) => {
+						setEventImg(e.target.value);
+					}}
+				/>
+                {/* <label htmlFor="event-date-time">Event Date and Time</label>
+                <input
+                    type="datetime-local"
+                    name="event-date-time"
+                    value={event_date}
+                /> */}
+
 				<button
 					id=""
 					type="submit"
-					disabled={disabledSubmitButton}
-				>IT'S A BUTTON COME ON
+					disabled={false}
+				>IT'S AN EVENT BUTTON COME ON
 				</button>
 			</form>
 		</div>

@@ -45,13 +45,13 @@ def create_event():
             event_date = form.data['event_date'],
             event_img = form.data['event_img'],
             event_title = form.data['event_title'],
-            private = form.data['private']
+            private = form.data['private_event']
         )
 
         db.session.add(new_event)
         db.session.commit()
+        print(new_event.to_dict())
         return {'event': new_event.to_dict()}
-    print({'errors': validation_errors_to_error_messages(form.errors)}, 401)
     return {'errors': validation_errors_to_error_messages(form.errors)}, 401
 
 
@@ -66,7 +66,7 @@ def edit_event(id):
             edited_event.event_date = form.data['event_date']
             edited_event.event_img = form.data['event_img']
             edited_event.event_title = form.data['event_title']
-            edited_event.private = form.data['private']
+            edited_event.private = form.data['private_event']
             db.session.commit()
             return {'event': edited_event.to_dict()}
         return {"errors": ["The only way you could see this is if you didn't make it"]}
