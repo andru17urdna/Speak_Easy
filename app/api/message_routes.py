@@ -36,7 +36,6 @@ def create_message():
         db.session.add(new_message)
         db.session.commit()
         return {'message': new_message.to_dict()}
-    print({'errors': validation_errors_to_error_messages(form.errors)}, 401)
     return {'errors': validation_errors_to_error_messages(form.errors)}, 401
 
 

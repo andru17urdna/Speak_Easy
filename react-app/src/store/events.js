@@ -1,4 +1,8 @@
-import { createUserEventThunk } from "./UserInfo"
+import { createUserEventThunk,
+         deleteUserEventThunk,
+         editUserEventThunk } from "./UserInfo";
+
+
 
 
 const GET_ALL_EVENTS = "events/GET_ALL_EVENTS"
@@ -44,15 +48,13 @@ export const createEventThunk = (payload) => async (dispatch) => {
         },
         body: JSON.stringify(payload)
     })
-        console.log(response, 'response from server')
     if (response.ok) {
         const data = await response.json();
         if (data.errors) {
-            console.log(data.errors)
             return data;
         }
-        dispatch(createEvent(data))
-        dispatch(createUserEventThunk(data))
+        dispatch(createEvent(data.event))
+        dispatch(createUserEventThunk(data.event))
         return data
     }
 }
@@ -69,10 +71,10 @@ export const editEventThunk = (payload, id) => async (dispatch) => {
     if (response.ok) {
         const data = await response.json();
         if (data.errors) {
-            console.log(data.errors)
             return data
         }
         dispatch(createEvent(data.event))
+        dispatch(editUserEventThunk(data.event))
     }
 }
 
@@ -86,6 +88,7 @@ export const deleteEventThunk = (id) => async (dispatch) => {
             return
         }
         dispatch(deleteEvent(id))
+        dispatch(deleteUserEventThunk(id))
     }
 }
 

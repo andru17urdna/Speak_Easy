@@ -1,4 +1,7 @@
-import { deleteMessagesFromUser, deleteMessagesToUser, createUserMessage } from "./UserInfo"
+import { deleteMessagesFromUser,
+         deleteMessagesToUser,
+         editUserMessages,
+         createUserMessage } from "./UserInfo"
 
 
 
@@ -73,10 +76,12 @@ export const editMessageThunk = (payload, id) => async (dispatch) => {
 
     if (response.ok) {
         const data = await response.json();
+        console.log(data, 'jsondata')
         if (data.errors) {
             return data
         }
         dispatch(createMessage(data.message))
+        dispatch(editUserMessages(data.message))
     }
 }
 
@@ -88,7 +93,6 @@ export const deleteMessageThunk = (id, userId) => async (dispatch) => {
     });
     if (response.ok) {
         const data = await response.json()
-        console.log(data)
         if(data.errors) {
             return
         }

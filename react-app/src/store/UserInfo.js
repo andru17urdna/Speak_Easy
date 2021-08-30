@@ -34,10 +34,6 @@ const deleteMessageToUser = (id) => ({
 
 
 
-
-
-
-
 export const getMessagesByUser = (id) => async (dispatch) => {
     const response = await fetch(`/api/messages/users/${id}`)
 
@@ -75,6 +71,7 @@ export const editUserMessages = (messageData) => (dispatch) => {
 
 const GET_USER_EVENTS = "events/GET_USER_EVENTS"
 const CREATE_USER_EVENT = "events/CREATE_EVENT"
+const DELETE_USER_EVENT = "events/DELETE_EVENT"
 
 const getUserEvents = (userEventData) => ({
     type: GET_USER_EVENTS,
@@ -86,11 +83,14 @@ const createUserEvent = (event) => ({
     payload: event
 })
 
+const deleteUserEvent = (id) => ({
+    type: DELETE_USER_EVENT,
+    payload: id
+})
+
 
 export const getEventsByUser = (id) => async (dispatch) => {
-    console.log(id)
     const response = await fetch(`/api/events/user-events/${id}`)
-    console.log(response)
     if (response.ok) {
 		const { user_event_data }  = await response.json();
 		dispatch(getUserEvents(user_event_data));
@@ -99,6 +99,14 @@ export const getEventsByUser = (id) => async (dispatch) => {
 
 export const createUserEventThunk = (data) => async (dispatch) => {
     dispatch(createUserEvent(data))
+}
+
+export const editUserEventThunk = (event) => async (dispatch) => {
+    dispatch(createUserEvent(event))
+}
+
+export const deleteUserEventThunk = (id) => async (dispatch) => {
+    dispatch(deleteUserEvent(id))
 }
 
 
@@ -131,7 +139,7 @@ export default function userInfoReducer(state = initialState, action) {
 
 
 
-// ===================CREATE USER INFO=======================================
+// ===============CREATE USER INFO OR EDIT CREATED INFO==========================
         case CREATE_MESSAGE:
             const newCreateState = {
             toUserMessages: {...state.toUserMessages},
@@ -145,10 +153,6 @@ export default function userInfoReducer(state = initialState, action) {
             userEvents: {...state.userEvents, [action.payload.id]:action.payload}
             }
             return newEventCreateState;
-
-
-
-// ===================EDIT USER INFO=======================================
 
 
 
@@ -169,6 +173,14 @@ export default function userInfoReducer(state = initialState, action) {
                 userEvents: {...state.userEvents}}
                 delete newDeleteStateToUser.toUserMessages[action.payload]
             return newDeleteStateToUser
+        case DELETE_USER_EVENT:
+            const newDeleteStateUserEvent = {
+                toUserMessages: {...state.toUserMessages},
+                fromUserMessages: {...state.fromUserMessages},
+                userEvents: {...state.userEvents}
+            }
+            delete newDeleteStateUserEvent.userEvents[action.payload]
+            return newDeleteStateUserEvent;
         default:
             return state
     }

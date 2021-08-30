@@ -13,38 +13,9 @@ function Homepage() {
     const events = useSelector((state) => state.events)
     const messages = useSelector((state) => state.messages)
 
-    const handleEventCreation = async ( e ) => {
-        e.preventDefault();
-        const data = {
-                description: "Sadly Bradley is no longer with us",
-                event_date: `08/25/2021 22:52:03`,
-                event_img: "Festttttttstt.",
-                event_title: "Bradleys Never having a birthday ever again",
-                private: false
-        }
+    
 
-            if (data) {
-            await dispatch(createEventThunk(data))
-        }
 
-    }
-
-    const handleEditEvent = async (e) => {
-        e.preventDefault();
-        const data = {
-            description: "Merrily Bradley has become a zombie",
-            event_date: `08/25/2021 22:52:03`,
-            event_img: "Fetch me their souls.",
-            event_title: "HOWDY HENNY",
-            private: true
-        }
-
-        if (data) {
-            await dispatch(editEventThunk(data, 1))
-
-        }
-
-    }
 
 
 // =======================================MESSAGES===================================
