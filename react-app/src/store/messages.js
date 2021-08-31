@@ -45,8 +45,8 @@ export const getAllMessagesThunk = () => async (dispatch) => {
 
 
 export const createMessageThunk = (payload) => async (dispatch) => {
-    console.log(payload)
-    const response = await fetch("api/messages/", {
+
+    const response = await fetch("/api/messages/", {
         method: "POST",
         headers: {
             "Content-Type": "application/json"
@@ -57,7 +57,7 @@ export const createMessageThunk = (payload) => async (dispatch) => {
     if (response.ok) {
         const data = await response.json();
         if (data.errors){
-            console.log(data.errors)
+
             return data;
         }
         await dispatch(createUserMessage(data.message))
@@ -76,7 +76,7 @@ export const editMessageThunk = (payload, id) => async (dispatch) => {
 
     if (response.ok) {
         const data = await response.json();
-        console.log(data, 'jsondata')
+
         if (data.errors) {
             return data
         }
@@ -87,7 +87,7 @@ export const editMessageThunk = (payload, id) => async (dispatch) => {
 
 
 export const deleteMessageThunk = (id, userId) => async (dispatch) => {
-    console.log(userId)
+
     const response = await fetch(`/api/messages/${id}`, {
         method: "DELETE",
     });
@@ -97,7 +97,6 @@ export const deleteMessageThunk = (id, userId) => async (dispatch) => {
             return
         }
         dispatch(deleteMessage(id))
-        console.log(data.currentUser, userId, '<++++++++++++++++++++++++++++HEHERHREHRHERHEEHRHRERHR')
         if (data.currentUser === userId) {
             dispatch(deleteMessagesFromUser(id))
         }

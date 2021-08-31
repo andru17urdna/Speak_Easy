@@ -1,5 +1,5 @@
-import React, { useState, useEffect } from "react";
-import { useSelector, useDispatch } from "react-redux";
+import React, { useState } from "react";
+import { useDispatch } from "react-redux";
 import { useHistory } from "react-router-dom";
 import { createEventThunk } from "../store/events";
 
@@ -43,7 +43,7 @@ const CreateEvent = () => {
 		};
 
 
-    
+
         if (data) {
             const eventData = await dispatch(createEventThunk(data));
         }

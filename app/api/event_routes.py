@@ -28,8 +28,15 @@ def get_all_events():
     return {'events': {event.id: event.to_dict() for event in events}}
 
 
+@event_routes.route('/user-events/<int:id>')
+def get_user_events(id):
+    events = Event.query.filter(Event.user_id == id).all()
+    return {event.id: event.to_dict() for event in events}
+
+
 @event_routes.route('/<int:id>')
 def get_one_event(id):
+    print(id)
     event = Event.query.get(id)
     return event.to_dict()
 
@@ -72,14 +79,6 @@ def edit_event(id):
         return {"errors": ["The only way you could see this is if you didn't make it"]}
     return {'errors': validation_errors_to_error_messages(form.errors)}
 
-
-
-
-@event_routes.route('/user-events/<int:id>')
-def get_user_events(id):
-    print("WHAT IS UP KYLE")
-    events = Event.query.filter(Event.user_id == id).all()
-    return {'user_event_data': {event.id: event.to_dict() for event in events}}
 
 
 @event_routes.route('/<int:id>', methods=["DELETE"])

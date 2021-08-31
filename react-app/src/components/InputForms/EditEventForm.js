@@ -1,6 +1,5 @@
-import React, { useState, useEffect } from "react";
-import { useSelector, useDispatch } from "react-redux";
-import { useParams } from "react-router-dom";
+import React, { useState } from "react";
+import {  useDispatch } from "react-redux";
 import { editEventThunk } from "../../store/events";
 
 
@@ -13,7 +12,7 @@ const EditEventForm = ({ event }) => {
 	const [event_date, setEventDateTime] = useState("08/25/2022 22:52:03");
 	const [private_event, setPrivateEvent] = useState(false);
     const dispatch = useDispatch();
-    console.log(event, "EVENT")
+    
 
 	const handleSubmit = async (e) => {
 		e.preventDefault();

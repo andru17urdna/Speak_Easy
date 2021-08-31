@@ -1,11 +1,10 @@
 
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import { NavLink } from 'react-router-dom';
 import LogoutButton from './auth/LogoutButton';
 import { useSelector, useDispatch } from 'react-redux';
 import { getMessagesByUser } from '../store/UserInfo';
 import { getEventsByUser } from '../store/UserInfo';
-import { createMessageThunk } from '../store/messages';
 import CreateNotification from './CreateNotification';
 import Notification from './Notification';
 import EventTower from './EventTower';
@@ -21,7 +20,6 @@ const NavBar = () => {
     const currentUserEvents = useSelector(state => state.userInfo.userEvents)
     useEffect(() => {
         if (user) {
-            console.log(user)
             dispatch(getMessagesByUser(user.id))
             dispatch(getEventsByUser(user.id))
         }

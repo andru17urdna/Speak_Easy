@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { useSelector, useDispatch } from "react-redux";
+import { useDispatch } from "react-redux";
 import { useHistory } from "react-router-dom";
 import { createMessageThunk } from "../store/messages";
 
@@ -27,7 +27,7 @@ const CreateNotification = () => {
             fetchData();
         }, []);
 
-        // console.log(users, "LIST OF USERS")
+        // (users, "LIST OF USERS")
 
 
 
@@ -64,7 +64,7 @@ const CreateNotification = () => {
 
 
             }
-        // console.log(messageData.errors)
+        // (messageData.errors)
 		// if (messageData.errors) {
         //     setErrors(messageData.errors)
         // }
