@@ -83,6 +83,7 @@ export const signUp = (username, email, password) => async (dispatch) => {
     }),
   });
 
+
   if (response.ok) {
     const data = await response.json();
     dispatch(setUser(data))
@@ -94,6 +95,38 @@ export const signUp = (username, email, password) => async (dispatch) => {
     }
   } else {
     return ['An error occurred. Please try again.']
+  }
+}
+
+export const usernameCheck = (username) => async (dispatch) => {
+
+  const response = await fetch('api/users/check-username', {
+    method: 'PATCH',
+    headers: {
+    'Content-type': 'application/json',
+  },
+    body: JSON.stringify({ username })
+  })
+
+  if (response.ok) {
+    const data = await response.json();
+    return data;
+  }
+}
+
+export const emailCheck = (email) => async (dispatch) => {
+
+  const response = await fetch('api/users/check-email', {
+    method: 'PATCH',
+    headers: {
+    'Content-type': 'application/json',
+  },
+    body: JSON.stringify({ email })
+  })
+
+  if (response.ok) {
+    const data = await response.json();
+    return data;
   }
 }
 

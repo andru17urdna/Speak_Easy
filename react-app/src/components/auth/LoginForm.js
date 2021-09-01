@@ -10,12 +10,24 @@ const LoginForm = () => {
   const user = useSelector(state => state.session.user);
   const dispatch = useDispatch();
 
-  const onLogin = async (e) => {
+  const onLogin = async (e, error= false) => {
     e.preventDefault();
-    const data = await dispatch(login(email, password));
-    if (data) {
-      setErrors(data);
+      setErrors([])
+
+      if (!email.includes('@') || !email.includes('.')) {
+        setErrors(prevState => [...prevState, "Please enter a valid email."])
+          error= true;
+      }
+      
+      if (!error) {
+
+        const data = await dispatch(login(email, password));
+          if (data) {
+            setErrors(data);
+          }
+
     }
+
   };
 
   const updateEmail = (e) => {

@@ -6,8 +6,8 @@ from wtforms.validators import DataRequired, Length
 
 
 class EventForm(FlaskForm):
-    description = StringField("description")
-    event_date = DateTimeField("event_date", format='%m/%d/%Y %H:%M:%S', validators=[validators.Optional(),])
-    event_img = StringField('event_img')
-    event_title = StringField("event_title")
-    private_event = BooleanField("private_event")
+    description = StringField("description", validators=[DataRequired(), Length(min=20, max=255)])
+    event_date = DateTimeField("event_date", format='%Y-%m-%d %H:%M', validators=[DataRequired()])
+    event_img = StringField('event_img', validators=[DataRequired(), Length(max=1000)])
+    event_title = StringField("event_title", validators=[DataRequired(), Length(min=10, max=50)])
+    private_event = BooleanField("private_event", validators=[validators.Optional(),])

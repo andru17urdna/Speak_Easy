@@ -59,7 +59,7 @@ def create_event():
         db.session.commit()
         print(new_event.to_dict())
         return {'event': new_event.to_dict()}
-    return {'errors': validation_errors_to_error_messages(form.errors)}, 401
+    return {'errors': validation_errors_to_error_messages(form.errors)}
 
 
 @event_routes.route('/<int:id>', methods=["PUT"])

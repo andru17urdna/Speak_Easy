@@ -9,7 +9,7 @@ const CreateEvent = () => {
 	const [event_title, setEventTitle] = useState("");
 	const [description, setDescription] = useState("");
 	const [event_img, setEventImg] = useState("");
-	const [event_date, setEventDateTime] = useState("08/25/2022 22:52:03");
+	const [event_date, setEventDateTime] = useState("");
 	const [private_event, setPrivateEvent] = useState(false);
 
 
@@ -17,36 +17,56 @@ const CreateEvent = () => {
 	const history = useHistory();
 
 
-	// const handleOptionClick = (e) => {
-	// 	setGenres((prevGenres) => [...prevGenres, +e.target.value]);
-	// };
 
 
 
-	// 	const idx = to_user_id.indexOf(+e.target.value);
-	// 	setToUserId((prevToUserId) =>
-	// 		prevToUserId.slice(0, idx).concat(prevToUserId.slice(idx + 1))
-	// 	);
-	// };
-
-
-	const handleSubmit = async (e) => {
+	const handleSubmit = async (e, error= false) => {
 		e.preventDefault();
+		setErrors([]);
+
+		if (event_title.length < 10 || event_title.length > 50 ) {
+			error= true;
+			setErrors(prevState => [...prevState, "Event title is incorrect length."])
+		}
+
+		if (description.length < 20 || description.length > 255) {
+			error = true;
+			setErrors(prevState => [...prevState, "Description is incorrect length."])
+		}
+
+		if (event_img.length > 1000) {
+			error = true;
+			setErrors(prevState => [...prevState, "Event Image url is too long."])
+		}
+
+		if (event_date.length === 0) {
+			error = true;
+			setErrors(prevState => [...prevState, "You must enter a date."])
+		}
 
 
-		const data = {
-			event_title,
-			description,
-			event_img,
-            event_date,
-            private_event
-		};
+		if (!error) {
+
+			const data = {
+				event_title,
+				description,
+				event_img,
+				event_date: event_date.split('T').join(" "),
+				private_event
+			};
 
 
 
-        if (data) {
-            const eventData = await dispatch(createEventThunk(data));
-        }
+			if (data) {
+
+				const eventData = await dispatch(createEventThunk(data));
+
+				if (eventData.errors) {
+					setErrors(eventData.errors)
+				}
+			}
+		}
+
     };
 
 
@@ -92,12 +112,16 @@ const CreateEvent = () => {
 						setEventImg(e.target.value);
 					}}
 				/>
-                {/* <label htmlFor="event-date-time">Event Date and Time</label>
+                <label htmlFor="event-date-time">Event Date and Time</label>
                 <input
                     type="datetime-local"
                     name="event-date-time"
+					required
+					onChange={(e) => {
+						setEventDateTime(e.target.value);
+					}}
                     value={event_date}
-                /> */}
+                />
 
 				<button
 					id=""

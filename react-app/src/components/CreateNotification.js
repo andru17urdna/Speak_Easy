@@ -23,6 +23,7 @@ const CreateNotification = () => {
             const response = await fetch('/api/users/');
             const responseData = await response.json();
             setUsers(responseData.users);
+			console.log(users)
             }
             fetchData();
         }, []);
@@ -48,26 +49,40 @@ const CreateNotification = () => {
 	// };
 
 
-	const handleSubmit = async (e) => {
+	const handleSubmit = async (e, error= false) => {
 		e.preventDefault();
+			setErrors([]);
 
 
-		const data = {
-			text,
-			to_user_id,
-			invite
-		};
+
+		if (text.length < 5 || text.length > 1000 ) {
+			error= true;
+			setErrors(prevState => [...prevState, "Message text is incorrect length."])
+		}
+
+		if (!to_user_id) {
+			error= true;
+			setErrors(prevState => [...prevState, "You must select a user."])
+		}
 
 
-        if (data) {
-                const messageData = await dispatch(createMessageThunk(data));
+			if (!error) {
 
+				const data = {
+					text,
+					to_user_id,
+					invite
+				};
 
-            }
-        // (messageData.errors)
-		// if (messageData.errors) {
-        //     setErrors(messageData.errors)
-        // }
+				if (data) {
+					const messageData = await dispatch(createMessageThunk(data));
+
+						if (messageData) {
+							setErrors(messageData.errors)
+						}
+				}
+			}
+
     };
 
 

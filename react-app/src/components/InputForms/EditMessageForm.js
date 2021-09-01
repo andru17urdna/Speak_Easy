@@ -9,15 +9,23 @@ const EditNotification = ({message}) => {
 	const [invite, setInvite] = useState(false);
 	const [disabledSubmitButton, setDisabledSubmitButton] = useState(false);
     const [users, setUsers] = useState([]);
-		
+
 
 	const dispatch = useDispatch();
 
 
 
-	const handleSubmit = async (e) => {
+	const handleSubmit = async (e, error= false) => {
 		e.preventDefault();
+		setErrors([]);
 
+
+		if (text.length < 5 || text.length > 1000 ) {
+			error= true;
+			setErrors(prevState => [...prevState, "Message text is incorrect length."])
+		}
+
+		if (!error) {
 
 		const data = {
 			text,
@@ -25,12 +33,14 @@ const EditNotification = ({message}) => {
 			invite
 		};
 
+			if (data) {
+				const messageData = await dispatch(editMessageThunk(data, message.id));
 
-        if (data) {
-                const messageData = await dispatch(editMessageThunk(data, message.id));
-
-
-            }
+				if (messageData) {
+					setErrors(messageData.errors)
+				}
+			}
+		}
     };
 
 
@@ -59,7 +69,6 @@ const EditNotification = ({message}) => {
 				>IT'S A BUTTON COME ON
 				</button>
 			</form>
-				<button>2ND BUTTTON</button>
 		</div>
 	);
 }
