@@ -8,12 +8,18 @@ marnie = User(
     username='marnie', email='marnie@aa.io', password='password')
 bobbie = User(
     username='bobbie', email='bobbie@aa.io', password='password')
+thomas = User(
+    username='thomas', email='thomas@aa.io', password='password')
+hector = User(
+    username='hector', email='hector@aa.io', password='password')
 
 def seed_users():
 
     db.session.add(demo)
     db.session.add(marnie)
     db.session.add(bobbie)
+    db.session.add(thomas)
+    db.session.add(hector)
 
     db.session.commit()
 

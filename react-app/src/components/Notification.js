@@ -1,7 +1,6 @@
 import React from 'react';
 import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { NavLink } from 'react-router-dom';
 import { deleteMessageThunk } from '../store/messages';
 import EditNotification  from './InputForms/EditMessageForm'
 
@@ -12,13 +11,12 @@ const Notification = ({message}) => {
     const [showEditField, setShowEditField] = useState(false);
     const user = useSelector(state => state.session.user)
 
-    console.log(message)
 
 
     useEffect(() => {
       if (user) {
-        console.log(message.from_user_id)
         if (message.from_user_id === user.id) {
+
         }
 
 

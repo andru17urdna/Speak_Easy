@@ -20,12 +20,28 @@ const createEvent = (event) => ({
 })
 
 
-
 const deleteEvent = (id) => ({
     type: DELETE_EVENT,
     payload: id
 })
 
+
+export const getOneUserEventsThunk = (id) =>  async () => {
+    const response = await fetch(`/api/events/user-events/${id}`);
+    if (response.ok) {
+        const oneUserEvents  = await response.json();
+        return oneUserEvents;
+    }
+}
+
+
+export const getOneEvent = (id) => async () => {
+    const response = await fetch(`/api/events/${id}`)
+    if (response.ok) {
+        const oneEvent = await response.json();
+        return oneEvent;
+    }
+}
 
 
 export const getAllEventsThunk = () => async (dispatch) => {
@@ -84,11 +100,11 @@ export const deleteEventThunk = (id) => async (dispatch) => {
     });
     if (response.ok) {
         const data = await response.json()
-        if(data.errors) {
-            return
-        }
-        dispatch(deleteEvent(id))
-        dispatch(deleteUserEventThunk(id))
+            if(data.errors) {
+                return
+            }
+            dispatch(deleteEvent(id))
+            dispatch(deleteUserEventThunk(id))
     }
 }
 

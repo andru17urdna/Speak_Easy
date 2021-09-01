@@ -40,7 +40,6 @@ export const getMessagesByUser = (id) => async (dispatch) => {
     if (response.ok) {
 		const { to_user_messages, from_user_messages } = await response.json();
 		if (to_user_messages.errors || from_user_messages.errors) {
-            console.log(to_user_messages.errors, from_user_messages.errors)
 			return;
 		}
 		dispatch(getUserMessages(to_user_messages, from_user_messages));
@@ -92,7 +91,7 @@ const deleteUserEvent = (id) => ({
 export const getEventsByUser = (id) => async (dispatch) => {
     const response = await fetch(`/api/events/user-events/${id}`)
     if (response.ok) {
-		const { user_event_data }  = await response.json();
+		const user_event_data   = await response.json();
 		dispatch(getUserEvents(user_event_data));
 	}
 }

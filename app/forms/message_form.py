@@ -6,6 +6,6 @@ from wtforms.validators import DataRequired, Length
 
 
 class MessageForm(FlaskForm):
-    text = StringField("text")
+    text = StringField("text", validators=[DataRequired(), Length(min=5, max=1000)])
     invite = BooleanField("invite")
-    to_user_id = IntegerField('to_user_id')
+    to_user_id = IntegerField('to_user_id', validators=[DataRequired()])

@@ -1,7 +1,6 @@
 import React from 'react';
-import { useEffect, useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import { NavLink } from 'react-router-dom';
+import { useState } from 'react';
+import { useDispatch } from 'react-redux';
 import { deleteEventThunk, editEventThunk } from '../store/events';
 import EditEventForm from './InputForms/EditEventForm';
 

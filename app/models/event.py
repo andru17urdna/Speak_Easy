@@ -15,9 +15,9 @@ class Event(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     user_id = db.Column(db.Integer, db.ForeignKey('users.id'), nullable=False, index=True)
     event_title = db.Column(db.String(50), index=True, nullable=False)
-    description = db.Column(db.String(256), nullable=False)
+    description = db.Column(db.String(255), nullable=False)
     event_img = db.Column(db.String(
-        500), nullable=False, default="https://spot-a-cloud.s3.us-east-2.amazonaws.com/AWS-Bucket/Profile-Photos/Seeder1-BlankPhoto.png")
+        1000), nullable=False, default="https://spot-a-cloud.s3.us-east-2.amazonaws.com/AWS-Bucket/Profile-Photos/Seeder1-BlankPhoto.png")
     event_date = db.Column(db.DateTime(timezone=True), server_default=func.now(), nullable=False)
     private = db.Column(db.Boolean, default=False)
     created_at = db.Column(db.DateTime(timezone=True),
