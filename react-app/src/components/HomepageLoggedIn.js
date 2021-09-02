@@ -1,6 +1,7 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from 'react-redux';
 import { getAllEventsThunk } from "../store/events";
+import { NavLink } from "react-router-dom";
 import './css/homepage.css';
 
 const HomepageLoggedIn = () => {
@@ -17,13 +18,15 @@ const HomepageLoggedIn = () => {
     return (
         <div id='user-home-container_div'>
             <h1 id='user-home_username'>Welcome {user.user_name} </h1>
+            <h2 id='user-home_h2'>Recently Created Events:</h2>
             <div id='user-home-event-cont_div'>
                 {events && events.map(event => (
                     <div className='event-container' key={event.id}>
-                        <h1 className='event-name'>{event.event_title}</h1>
+                        <NavLink to={`/event/${event.id}`}><h1>{event.event_title}</h1></NavLink>
                         <img className='user-home_event-img' src={"https://suitabletech.com/images/HelpCenter/errors/Lenovo-Camera-Error.JPG"} alt='event'></img>
                         <p>{event.description}</p>
                         <p>{event.event_date}</p>
+                        <NavLink to={`/user/${event.user_id}`}>{"User-Link"}</NavLink>
                     </div>
                 ))}
             </div>
@@ -34,6 +37,7 @@ const HomepageLoggedIn = () => {
                 <img src={events[0].event_img} id='user-home_next-img' alt='event'></img>
                 <p>{events[0].description}</p>
                 <p>{events[0].event_date}</p>
+                <NavLink to={`/user/${events[0].user_id}`}>{"User-Link"}</NavLink>
             </div>
             )}
         </div>

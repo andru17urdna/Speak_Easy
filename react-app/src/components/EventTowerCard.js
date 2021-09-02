@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react';
 import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import { NavLink } from 'react-router-dom';
 
 import { deleteEventThunk, editEventThunk } from '../store/events';
 
@@ -8,34 +9,26 @@ import EditEventForm from './InputForms/EditEventForm';
 
 
 const EventTowerCard = ({event}) => {
-
-    console.log(event)
-
     const dispatch = useDispatch();
 
     const [showEditField, setShowEditField] = useState(false);
-
-
 
     const handleDelete = async (e) => {
         await dispatch(deleteEventThunk(e))
     }
 
-    const handleEdit = async (e) => {
-        await dispatch(editEventThunk(e))
-    }
 
     return (
         <div>
-            <h1>{event.event_title}</h1>
+            <NavLink to={`/event/${event.id}`}><h1>{event.event_title}</h1></NavLink>
                 <h2>{event.description}</h2>
                 <p>{event.event_date}</p>
+                <NavLink to={`/user/${event.user_id}`}>{"User-Link"}</NavLink>
                 {/* <img src={event.event_img} alt='event' /> */}
-                <button onClick={() => setShowEditField((prevState) => !prevState)}>EDIT</button>
+                <button onClick={() => setShowEditField((prevState) => !prevState)}>{!showEditField? "Edit" : "Close Edit Form"}</button>
                 {showEditField && (
                     <div>
                         <EditEventForm event={event}/>
-                        {/* <button onClick={() => setShowEditField((prevState) => !prevState)}>EDIT</button> */}
                         <button onClick={() => handleDelete(event.id)}>DELETE</button>
                     </div>
                 )}

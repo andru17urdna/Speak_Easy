@@ -7,7 +7,6 @@ import { getMessagesByUser } from '../store/UserInfo';
 import CreateNotification from './CreateNotification';
 import Notification from './Notification';
 import { login } from '../store/session';
-import EventTower from './EventTower';
 
 import "./css/navbar.css";
 
@@ -37,6 +36,7 @@ const NavBar = () => {
 
   return (
     <nav id='nav-container'>
+      <NavLink to='/'>Home</NavLink>
       <div className="dropdown">
         {user &&
       <span>{user.user_name}</span>
@@ -63,11 +63,6 @@ const NavBar = () => {
             Sign Up
           </NavLink>
         </li>
-        {/* <li>
-          <NavLink to='/users' exact={true} activeClassName='active'>
-            Users
-          </NavLink>
-        </li> */}
         <li>
           <LogoutButton />
         </li>
@@ -76,15 +71,15 @@ const NavBar = () => {
         </li>
       </ul>
       {showMessages && (
-      <div>
-        <h1>====================== Messages To Current User =================== </h1>
+      <div id='message-container_div'>
+        <h1>Notifications to you: </h1>
         <div><CreateNotification /></div>
         {messagesToCurrentUser && Object.values(messagesToCurrentUser).map(message =>(
           <div key={message.id}>
             <Notification message={message}  />
           </div>
         ))}
-        <h1>====================== Messages From Current User =================== </h1>
+        <h1>Sent Notifications: </h1>
         {messagesFromCurrentUser && Object.values(messagesFromCurrentUser).reverse().map(message => (
           <div key={message.id}>
             <Notification message={message} />

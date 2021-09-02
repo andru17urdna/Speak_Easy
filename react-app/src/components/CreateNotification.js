@@ -123,7 +123,7 @@ const CreateNotification = () => {
 					id=""
 					type="submit"
 					disabled={disabledSubmitButton}
-				>IT'S A BUTTON COME ON
+				>Create Notification
 				</button>
 			</form>
 		</div>

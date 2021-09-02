@@ -2,6 +2,7 @@ import React, { useState, useEffect} from "react";
 import { useDispatch, useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
 import { getOneEvent } from "../store/events";
+import { NavLink } from "react-router-dom";
 import './css/eventpage.css'
 
 const EventPage = () => {
@@ -33,6 +34,7 @@ const EventPage = () => {
                 <img id='event-page-event_img' src={event.event_img}></img>
                 <p>{event.description}</p>
                 <p>{event.event_date}</p>
+                <NavLink to={`/user/${event.user_id}`}>Link to Event Creator</NavLink>
             </div>
         </div>
     )

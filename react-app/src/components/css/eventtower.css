@@ -5,7 +5,7 @@
     width: 15vw;
     left: 85vw;
     height: 95vh;
-    overflow: scroll;
+    overflow-y: scroll;
     display: grid;
     grid-template-rows: repeat();
     row-gap: 1vh;

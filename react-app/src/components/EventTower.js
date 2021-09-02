@@ -14,9 +14,6 @@ const EventTower = () => {
     const [showCreateEvent, setShowCreateEvent] = useState(false);
 
 
-
-
-
     const user = useSelector(state => state.session.user)
     const userEvents = useSelector(state =>  Object.values(state.userInfo.userEvents))
 
@@ -30,10 +27,11 @@ if (user) {
 
   return (
       <div id="event-tower__container">
-          <div id='event-tower_header'>
+        <div id='event-tower_header'>
               <p>Event Tower</p>
-          <button onClick={() => setShowCreateEvent((prevState) => !prevState)}><span class="material-icons">add</span></button>
+          <button onClick={() => setShowCreateEvent((prevState) => !prevState)}><span className="material-icons">add</span></button>
         </div>
+
           {showCreateEvent && (
               <CreateEvent />
           )}
@@ -41,7 +39,6 @@ if (user) {
         {userEvents && userEvents.map(event => (
             <div className='event-tower_event-div' key={event.id}>
                 <EventTowerCard event={event} />
-
             </div>
           ))}
       </div>

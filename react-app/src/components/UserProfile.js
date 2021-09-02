@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
 import { getOneUserEventsThunk } from "../store/events";
 import { getASingleUserThunk } from "../store/session";
+import { NavLink } from "react-router-dom";
 import './css/profilepage.css'
 
 const UserProfile = () => {
@@ -46,7 +47,7 @@ const UserProfile = () => {
             <div id = 'profile-events'>
                {userEvents && Object.values(userEvents).map(event =>(
                    <div className='profile-event-container' key={event.id}>
-                       <h1>{event.event_title}</h1>
+                       <NavLink to={`/event/${event.id}`}><h1>{event.event_title}</h1></NavLink>
                        <p>{event.description}</p>
                    </div>
 

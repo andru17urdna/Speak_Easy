@@ -11,7 +11,7 @@
     position: relative;
     display: inline-block;
     grid-column: 9;
-    justify-self: end;
+    justify-self: start;
     align-self: center;
 }
 
@@ -23,8 +23,15 @@
     box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
     padding: 12px 16px;
     z-index: 4;
+    width: 18vw;
 }
 
 .dropdown:hover .dropdown-content {
     display: block;
   }
+
+#message-container_div{
+    height: 50vh;
+    overflow-y: scroll;
+    width: 18vw;
+}

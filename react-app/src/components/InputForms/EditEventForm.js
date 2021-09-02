@@ -63,7 +63,7 @@ const EditEventForm = ({ event }) => {
 
         return (
             <div id="">
-                
+
                 <form id="" onSubmit={handleSubmit}>
                     {errors.map((error, ind) => (
                         <div key={ind}>{error}</div>
@@ -119,7 +119,7 @@ const EditEventForm = ({ event }) => {
                         id=""
                         type="submit"
                         disabled={false}
-                    >IT'S AN EVENT BUTTON COME ON
+                    >Edit Event?
                     </button>
                 </form>
             </div>
