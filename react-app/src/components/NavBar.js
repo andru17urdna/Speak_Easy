@@ -37,7 +37,7 @@ const NavBar = () => {
 
   return (
     <nav id='nav-container'>
-      <div class="dropdown">
+      <div className="dropdown">
         {user &&
       <span>{user.user_name}</span>
       }
@@ -104,7 +104,6 @@ const NavBar = () => {
           <NavLink to='/login' exact={true} activeClassName='active'>
             Login
           </NavLink>
-
           <NavLink to='/sign-up' exact={true} activeClassName='active'>
             Sign Up
           </NavLink>
