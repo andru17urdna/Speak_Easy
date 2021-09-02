@@ -1,9 +1,9 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from 'react-redux';
 import { getAllEventsThunk } from "../store/events";
+import './css/homepage.css';
 
-
-const UserHome = () => {
+const HomepageLoggedIn = () => {
     const dispatch = useDispatch();
 
     useEffect(() => {
@@ -30,8 +30,8 @@ const UserHome = () => {
             <h1 id='user-home_next'>Next Most Recent Event:</h1>
             {events.length && (
             <div id='user-home_next-event'>
-                <h1>{events[0].event_title}</h1>
-                <img src={events[0].event_img} alt='event'></img>
+                <h1 id='user-home_next-h1'>{events[0].event_title}</h1>
+                <img src={events[0].event_img} id='user-home_next-img' alt='event'></img>
                 <p>{events[0].description}</p>
                 <p>{events[0].event_date}</p>
             </div>
@@ -41,4 +41,4 @@ const UserHome = () => {
 }
 
 
-export default UserHome
+export default HomepageLoggedIn

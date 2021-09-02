@@ -6,6 +6,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { getMessagesByUser } from '../store/UserInfo';
 import CreateNotification from './CreateNotification';
 import Notification from './Notification';
+import { login } from '../store/session';
 import EventTower from './EventTower';
 
 import "./css/navbar.css";
@@ -19,6 +20,12 @@ const NavBar = () => {
     const user = useSelector(state => state.session.user)
     const messagesToCurrentUser = useSelector(state => state.userInfo.toUserMessages)
     const messagesFromCurrentUser = useSelector(state => state.userInfo.fromUserMessages)
+
+    const demoUserLogin = async (e) => {
+      e.preventDefault();
+      await dispatch(login("demo@aa.io", "password"));
+    };
+
     useEffect(() => {
         if (user) {
             dispatch(getMessagesByUser(user.id))
@@ -30,7 +37,6 @@ const NavBar = () => {
 
   return (
     <nav id='nav-container'>
-      <NavLink to='/'>Home</NavLink>
       <div class="dropdown">
         {user &&
       <span>{user.user_name}</span>
@@ -38,8 +44,13 @@ const NavBar = () => {
       <div className='dropdown-content'>
       <ul>
         <li>
-          <NavLink to='/user-home' exact={true} activeClassName='active'>
+          <NavLink to='/' exact={true} activeClassName='active'>
             Home
+          </NavLink>
+        </li>
+        <li>
+          <NavLink to={`/user/${user.id}`}>
+            Profile
           </NavLink>
         </li>
         <li>
@@ -90,18 +101,16 @@ const NavBar = () => {
 
     return (
       <nav id='nav-container'>
-        <ul>
-        <li>
           <NavLink to='/login' exact={true} activeClassName='active'>
             Login
           </NavLink>
-        </li>
-        <li>
+
           <NavLink to='/sign-up' exact={true} activeClassName='active'>
             Sign Up
           </NavLink>
-        </li>
-      </ul>
+          <button onClick={demoUserLogin}>
+            DEMO
+          </button>
       </nav>
     )
   }

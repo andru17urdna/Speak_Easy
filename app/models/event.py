@@ -34,7 +34,7 @@ class Event(db.Model):
             'user_id': self.user_id,
             'event_title': self.event_title,
             'description': self.description,
-            'event_img': self.description,
+            'event_img': self.event_img,
             'event_date': self.event_date,
             'private': self.private,
             'created_at': self.created_at,
