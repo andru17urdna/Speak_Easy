@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { Redirect } from 'react-router-dom';
 import { login } from '../../store/session';
+import "../../components/css/log-in.css"
 
 const LoginForm = () => {
   const [errors, setErrors] = useState([]);
@@ -18,7 +19,7 @@ const LoginForm = () => {
         setErrors(prevState => [...prevState, "Please enter a valid email."])
           error= true;
       }
-      
+
       if (!error) {
 
         const data = await dispatch(login(email, password));
@@ -39,11 +40,11 @@ const LoginForm = () => {
   };
 
   if (user) {
-    return <Redirect to='/' />;
+    return <Redirect to='/user-home' />;
   }
 
   return (
-    <form onSubmit={onLogin}>
+    <form id='log-in_form' onSubmit={onLogin}>
       <div>
         {errors.map((error, ind) => (
           <div key={ind}>{error}</div>

@@ -111,6 +111,7 @@ const CreateNotification = () => {
 				<input
 					name="text"
 					type="text"
+					autocomplete="off"
 					placeholder="Your Message Here"
 					value={text}
 					required

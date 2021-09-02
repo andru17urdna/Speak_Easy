@@ -1,0 +1,24 @@
+#event-tower__container{
+    background-color: aquamarine;
+    position: fixed;
+    top: 5vh;
+    width: 15vw;
+    left: 85vw;
+    height: 95vh;
+    overflow: scroll;
+    display: grid;
+    grid-template-rows: repeat();
+    row-gap: 1vh;
+}
+
+#event-tower_header{
+    height: 8vh;
+    background-color: lightyellow;
+    display: grid;
+}
+
+.event-tower_event-div{
+    width: 13vw;
+    background-color: lightskyblue;
+    justify-self: center;
+}

@@ -51,9 +51,9 @@ const EditEventForm = ({ event }) => {
             if (data) {
                 const eventData = await dispatch(editEventThunk(data, event.id));
 
-                if (eventData.errors) {
-					setErrors(eventData.errors)
-				}
+                // if (eventData.errors) {
+				// 	setErrors(eventData.errors)
+				// }
             }
         }
 
@@ -63,6 +63,7 @@ const EditEventForm = ({ event }) => {
 
         return (
             <div id="">
+                
                 <form id="" onSubmit={handleSubmit}>
                     {errors.map((error, ind) => (
                         <div key={ind}>{error}</div>

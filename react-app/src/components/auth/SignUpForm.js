@@ -29,16 +29,6 @@ const SignUpForm = () => {
 
 
 
-
-
-
-
-
-
-
-
-
-
   const checkUsername = async (e) => {
     const data = await dispatch(usernameCheck(e))
       if (data.message) {

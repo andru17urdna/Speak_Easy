@@ -1,0 +1,30 @@
+#nav-container{
+    background-color: lightblue;
+    width: 100vw;
+    height: 5vh;
+    position: absolute;
+    display: grid;
+    grid-template-columns: repeat(10, 10vw);
+}
+
+.dropdown{
+    position: relative;
+    display: inline-block;
+    grid-column: 9;
+    justify-self: end;
+    align-self: center;
+}
+
+.dropdown-content{
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    padding: 12px 16px;
+    z-index: 4;
+}
+
+.dropdown:hover .dropdown-content {
+    display: block;
+  }
