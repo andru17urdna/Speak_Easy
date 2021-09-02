@@ -12,7 +12,6 @@ const Notification = ({message}) => {
     const user = useSelector(state => state.session.user)
 
 
-
     useEffect(() => {
       if (user) {
         if (message.from_user_id === user.id) {
@@ -22,11 +21,6 @@ const Notification = ({message}) => {
 
       }
   }, [dispatch])
-
-
-
-
-
 
 
   return (

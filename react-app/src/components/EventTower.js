@@ -1,39 +1,52 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useState } from 'react';
-import { useDispatch } from 'react-redux';
-import { deleteEventThunk, editEventThunk } from '../store/events';
-import EditEventForm from './InputForms/EditEventForm';
+import { useDispatch, useSelector } from 'react-redux';
+import { getEventsByUser } from '../store/UserInfo';
+import EventTowerCard from './EventTowerCard'
 
-const EventTower = ({userEvent}) => {
-    const [showEditField, setShowEditField] = useState(false);
+import CreateEvent from './CreateEvent';
+import "./css/eventtower.css";
+
+const EventTower = () => {
+
     const dispatch = useDispatch();
 
-    const handleDelete = async () => {
-        await dispatch(deleteEventThunk(userEvent.id))
-    }
+    const [showCreateEvent, setShowCreateEvent] = useState(false);
 
-    const handleEdit = async () => {
-        await dispatch(editEventThunk(userEvent.id))
-    }
+
+    const user = useSelector(state => state.session.user)
+    const userEvents = useSelector(state =>  Object.values(state.userInfo.userEvents))
+
+    useEffect(() => {
+        if (user) {
+            dispatch(getEventsByUser(user.id))
+        }
+    }, [dispatch, user])
+
+if (user) {
 
   return (
-      <>
+      <div id="event-tower__container">
+        <div id='event-tower_header'>
+              <p>Event Tower</p>
+          <button onClick={() => setShowCreateEvent((prevState) => !prevState)}><span className="material-icons">add</span></button>
+        </div>
 
-
-          <h1>{userEvent.event_title}</h1>
-          <h2>{userEvent.description}</h2>
-          {/* <img src={userEvent.event_img} alt='userEvent' /> */}
-          <button onClick={() => setShowEditField((prevState) => !prevState)}>EDIT</button>
-          {showEditField && (
-              <div>
-                  <EditEventForm event={userEvent}/>
-                <button onClick={() => setShowEditField((prevState) => !prevState)}>EDIT</button>
-                <button onClick={handleDelete}>DELETE</button>
-              </div>
+          {showCreateEvent && (
+              <CreateEvent />
           )}
 
-      </>
-  );
+        {userEvents && userEvents.map(event => (
+            <div className='event-tower_event-div' key={event.id}>
+                <EventTowerCard event={event} />
+            </div>
+          ))}
+      </div>
+  )} else {
+      return (
+          <div></div>
+      )
+  }
 }
 
 export default EventTower;

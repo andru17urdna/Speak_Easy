@@ -3,6 +3,7 @@ import { useSelector, useDispatch } from 'react-redux'
 import { Redirect } from 'react-router-dom';
 import { signUp } from '../../store/session';
 import {usernameCheck, emailCheck} from '../../store/session'
+import "../css/signup.css";
 
 const SignUpForm = () => {
   const [errors, setErrors] = useState([]);
@@ -29,16 +30,6 @@ const SignUpForm = () => {
 
 
 
-
-
-
-
-
-
-
-
-
-
   const checkUsername = async (e) => {
     const data = await dispatch(usernameCheck(e))
       if (data.message) {
@@ -61,8 +52,6 @@ const SignUpForm = () => {
     }
   }
 
-
-
   const updateEmail = (e) => {
     setEmail(e.target.value);
 
@@ -72,6 +61,10 @@ const SignUpForm = () => {
     }
   };
 
+
+
+
+  
   const updatePassword = (e) => {
     setPassword(e.target.value);
   };
@@ -85,7 +78,7 @@ const SignUpForm = () => {
   }
 
   return (
-    <form onSubmit={onSignUp}>
+    <form id='sign-up_form' onSubmit={onSignUp}>
       <div>
         {errors.map((error, ind) => (
           <div key={ind}>{error}</div>

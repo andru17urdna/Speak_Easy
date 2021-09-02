@@ -4,14 +4,16 @@ import { useDispatch } from 'react-redux';
 import LoginForm from './components/auth/LoginForm';
 import SignUpForm from './components/auth/SignUpForm';
 import NavBar from './components/NavBar';
+import EventTower from './components/EventTower';
 import ProtectedRoute from './components/auth/ProtectedRoute';
 import UsersList from './components/UsersList';
 import User from './components/User';
 import { authenticate } from './store/session';
 import Homepage from './components/Homepage';
-import UserHome from './components/UserHome';
 import UserProfile from './components/UserProfile';
 import EventPage from './components/EventPage';
+
+
 function App() {
   const [loaded, setLoaded] = useState(false);
   const dispatch = useDispatch();
@@ -30,6 +32,7 @@ function App() {
   return (
     <BrowserRouter>
       <NavBar />
+      <EventTower />
       <Switch>
         <Route path='/login' exact={true}>
           <LoginForm />
@@ -49,13 +52,9 @@ function App() {
         <ProtectedRoute path='/user/:userId' exact={true}>
           <UserProfile />
         </ProtectedRoute>
-        <ProtectedRoute path='/user-home' exact={true}>
-          <UserHome />
-        </ProtectedRoute>
-        <ProtectedRoute path='/' exact={true} >
-          <h1>My Home Page</h1>
+        <Route path='/' exact={true} >
           <Homepage />
-        </ProtectedRoute>
+        </Route>
       </Switch>
     </BrowserRouter>
   );

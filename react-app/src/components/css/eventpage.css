@@ -1,0 +1,25 @@
+#event-container_div{
+    position: relative;
+    top: 5vh;
+    height: 95vh;
+    width: 85vw;
+    background-color: lightcoral;
+    display: grid;
+    grid-template-columns: repeat(10, 8.5vw);
+    grid-template-rows: repeat(9, 10vh);
+}
+
+#event_div{
+    height: 55vh;
+    width: 80vw;
+    grid-row: 1/ 7;
+    grid-column: 1/ span end;
+    align-self: center;
+    justify-self: center;
+    background-color: linen;
+}
+
+
+#event-page-event_img{
+    width: 10vw;
+}

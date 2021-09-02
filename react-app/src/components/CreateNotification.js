@@ -111,6 +111,7 @@ const CreateNotification = () => {
 				<input
 					name="text"
 					type="text"
+					autocomplete="off"
 					placeholder="Your Message Here"
 					value={text}
 					required
@@ -122,7 +123,7 @@ const CreateNotification = () => {
 					id=""
 					type="submit"
 					disabled={disabledSubmitButton}
-				>IT'S A BUTTON COME ON
+				>Create Notification
 				</button>
 			</form>
 		</div>
