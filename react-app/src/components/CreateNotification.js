@@ -23,12 +23,17 @@ const CreateNotification = () => {
             const response = await fetch('/api/users/');
             const responseData = await response.json();
             setUsers(responseData.users);
-			console.log(users)
             }
             fetchData();
         }, []);
 
-        // (users, "LIST OF USERS")
+
+		const handleCancel = (e) => {
+			e.preventDefault()
+			setErrors([])
+			setText("")
+			setToUserId(null)
+		}
 
 
 
@@ -87,8 +92,8 @@ const CreateNotification = () => {
 
 
 	return (
-		<div id="">
-			<form id="" onSubmit={handleSubmit}>
+
+			<form id="create_notification" onSubmit={handleSubmit}>
 				{errors.map((error, ind) => (
 					<div key={ind}>{error}</div>
 				))}
@@ -108,11 +113,12 @@ const CreateNotification = () => {
 				</select>
 
 				<label htmlFor="text">Text</label>
-				<input
+				<textarea
 					name="text"
 					type="text"
 					autocomplete="off"
 					placeholder="Your Message Here"
+					rows="2" cols="33"
 					value={text}
 					required
 					onChange={(e) => {
@@ -125,8 +131,9 @@ const CreateNotification = () => {
 					disabled={disabledSubmitButton}
 				>Create Notification
 				</button>
+				<button onClick={(e)=> handleCancel(e)}>Cancel</button>
 			</form>
-		</div>
+
 	);
 }
 

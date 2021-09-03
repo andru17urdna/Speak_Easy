@@ -6,9 +6,12 @@ import { useSelector, useDispatch } from 'react-redux';
 import { getMessagesByUser } from '../store/UserInfo';
 import CreateNotification from './CreateNotification';
 import Notification from './Notification';
+import { Modal } from './Context/Modal';
 import { login } from '../store/session';
+import UserMessagesModal from './UserMessages';
 
 import "./css/navbar.css";
+import UserMessages from './UserMessages/UserMessages';
 
 const NavBar = () => {
 
@@ -17,19 +20,19 @@ const NavBar = () => {
     const [showMessages, setShowMessages] = useState(false);
 
     const user = useSelector(state => state.session.user)
-    const messagesToCurrentUser = useSelector(state => state.userInfo.toUserMessages)
-    const messagesFromCurrentUser = useSelector(state => state.userInfo.fromUserMessages)
+    // const messagesToCurrentUser = useSelector(state => state.userInfo.toUserMessages)
+    // const messagesFromCurrentUser = useSelector(state => state.userInfo.fromUserMessages)
 
     const demoUserLogin = async (e) => {
       e.preventDefault();
       await dispatch(login("demo@aa.io", "password"));
     };
 
-    useEffect(() => {
-        if (user) {
-            dispatch(getMessagesByUser(user.id))
-        }
-    }, [dispatch, user])
+    // useEffect(() => {
+    //     if (user) {
+    //         dispatch(getMessagesByUser(user.id))
+    //     }
+    // }, [dispatch, user])
 
 
     if (user) {
@@ -38,9 +41,8 @@ const NavBar = () => {
     <nav id='nav-container'>
       <NavLink to='/'>Home</NavLink>
       <div className="dropdown">
-        {user &&
-      <span>{user.user_name}</span>
-      }
+        {user && (<span>{user.user_name}<span class="material-icons">
+              expand_more</span></span>)}
       <div className='dropdown-content'>
       <ul>
         <li>
@@ -54,42 +56,12 @@ const NavBar = () => {
           </NavLink>
         </li>
         <li>
-          <NavLink to='/login' exact={true} activeClassName='active'>
-            Login
-          </NavLink>
-        </li>
-        <li>
-          <NavLink to='/sign-up' exact={true} activeClassName='active'>
-            Sign Up
-          </NavLink>
-        </li>
-        <li>
           <LogoutButton />
         </li>
-        <li>
-          <button onClick={() => setShowMessages((prevState) => !prevState)}>SHOW MESSAGES</button>
-        </li>
       </ul>
-      {showMessages && (
-      <div id='message-container_div'>
-        <h1>Notifications to you: </h1>
-        <div><CreateNotification /></div>
-        {messagesToCurrentUser && Object.values(messagesToCurrentUser).map(message =>(
-          <div key={message.id}>
-            <Notification message={message}  />
-          </div>
-        ))}
-        <h1>Sent Notifications: </h1>
-        {messagesFromCurrentUser && Object.values(messagesFromCurrentUser).reverse().map(message => (
-          <div key={message.id}>
-            <Notification message={message} />
-          </div>
-        ))}
-
-      </div>
-        )}
       </div>
     </div>
+    <UserMessagesModal />
     </nav>
   );
   } else {

@@ -8,6 +8,7 @@ import { createUserEventThunk,
 const GET_ALL_EVENTS = "events/GET_ALL_EVENTS"
 const CREATE_EVENT = "events/CREATE_EVENT"
 const DELETE_EVENT = "events/DELETE_EVENT"
+const DROP_EVENTS = "events/DROP_EVENTS"
 
 const getAllEvents = (events) => ({
     type: GET_ALL_EVENTS,
@@ -23,6 +24,10 @@ const createEvent = (event) => ({
 const deleteEvent = (id) => ({
     type: DELETE_EVENT,
     payload: id
+})
+
+const dropEvents = () => ({
+    type: DROP_EVENTS
 })
 
 
@@ -45,7 +50,7 @@ export const getOneEvent = (id) => async () => {
 
 
 export const getAllEventsThunk = () => async (dispatch) => {
-    const response = await fetch("/api/events");
+    const response = await fetch("/api/events/");
 
     if (response.ok) {
         const { events } = await response.json();
@@ -108,6 +113,11 @@ export const deleteEventThunk = (id) => async (dispatch) => {
     }
 }
 
+
+export const dropEvent = () => async (dispatch) => {
+    dispatch(dropEvents())
+}
+
 const initialState = {};
 
 export default function eventsReducer(state = initialState, action) {
@@ -122,6 +132,8 @@ export default function eventsReducer(state = initialState, action) {
         case CREATE_EVENT:
             const newCreateState = {...state, [action.payload.id]: action.payload}
             return newCreateState
+        case DROP_EVENTS:
+            return initialState;
         default:
             return state
     }

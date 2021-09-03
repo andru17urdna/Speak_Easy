@@ -1,5 +1,35 @@
 * {
-    Margin:0;
-    Padding:0;
-    /* Border:0; */
+    margin:0;
+    padding:0;
 }
+
+body {
+    font-family: 'Cardo', serif;
+    font-weight: 600;
+   }
+
+   h1, h2, h3, h4, h5, h6 {
+    font-family: 'Oswald', sans-serif;
+    text-transform: uppercase;
+   }
+
+   ::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+  }
+
+
+  ::-webkit-scrollbar-track {
+    background: #f1f1f1;
+    border: black solid 1px;
+  }
+
+
+  ::-webkit-scrollbar-thumb {
+    background: gray;
+  }
+
+
+  ::-webkit-scrollbar-thumb:hover {
+    background:darkslategray;
+  }

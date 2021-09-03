@@ -1,5 +1,4 @@
 #event-tower__container{
-    background-color: aquamarine;
     position: fixed;
     top: 5vh;
     width: 15vw;
@@ -9,16 +8,159 @@
     display: grid;
     grid-template-rows: repeat();
     row-gap: 1vh;
+    border-left: solid black 2px;
 }
 
 #event-tower_header{
     height: 8vh;
-    background-color: lightyellow;
+    background-color: black;
     display: grid;
+    grid-template-columns: repeat(2, 7vw);
+    grid-template-rows: repeat(2, 4vh);
+    position: sticky;
+    top: 0px;
+    color: white;
+    z-index: 2;
 }
 
 .event-tower_event-div{
     width: 13vw;
-    background-color: lightskyblue;
     justify-self: center;
+}
+
+#add-event_p{
+    font-size: 40px;
+    grid-row: 1;
+    grid-column: 2;
+    justify-self: end;
+}
+
+
+#add-event_head-p{
+    font-size: 30px;
+    grid-row: 2;
+    grid-column: 1 /span end;
+    justify-self: center;
+    align-self: center;
+}
+
+.event-card_container{
+    border: black solid 2px;
+    width: 12vw;
+    height: 40vh;
+    display: grid;
+    grid-template-columns: repeat(4, 3vw);
+    grid-template-rows: repeat(4,10vh );
+}
+
+.eventcard_container-editfield{
+    border: black solid 2px;
+    display: grid;
+    width: 12vw;
+    height: 80vh;
+    grid-template-columns: repeat(4, 3vw);
+    grid-template-rows: repeat(4, 10vh ) 40vh;
+}
+
+.event-card_title{
+    grid-row: 1;
+    grid-column: 1/ span end;
+    font-size: 10px;
+    text-align: center;
+}
+
+.event-card-event_img{
+    width: 9vw;
+    justify-self: center;
+    grid-row: 2/ 4;
+    grid-column: 1/ span end;
+}
+
+
+.event-card_description{
+    font-size: 15px;
+    grid-row: 4;
+    grid-column: 1/span end;
+    padding-left: 6px;
+    padding-right: 4px;
+}
+
+.event-card_user-link{
+    grid-row: 1;
+    grid-column: 1/ span end;
+    color:white;
+    align-self: end;
+    padding-bottom: 5px;
+}
+
+.event-card_date{
+    font-size: 15px;
+    grid-row: 4;
+    grid-column: 1/span end;
+    align-self: end;
+    padding-left: 6px;
+    padding-right: 4px;
+}
+
+.event-card_edit-swap{
+    grid-column: 4;
+    grid-row: 4;
+    align-self: end;
+    justify-self: end;
+    transform: translate(-50%, -20%);
+}
+
+.event-card_edit-swap > span {
+    font-size: 40px;
+    color: black;
+}
+
+.event-card_edit-swap > span:hover {
+    color: red;
+}
+
+
+.event-card_edit-swap-active{
+    font-size: 20px;
+    grid-column: 4;
+    grid-row: 4;
+    align-self: end;
+    justify-self: end;
+    transform: translate(-90%, -40%);
+    color:black;
+}
+
+.delete_event{
+    grid-column: 4;
+    grid-row: 1;
+    justify-self: end;
+    align-self: start;
+    transform: translate(50%,-50%);
+    font-size: 30px;
+    color: red;
+
+}
+
+.event-card_edit-form-div{
+    height: 37vh;
+    grid-row: 5;
+    grid-column: 1 /span end;
+    align-self: end;
+    display: grid;
+    background-color: gray;
+}
+
+
+#edit-event_form{
+    display: grid;
+    align-self: center;
+    height: 100%;
+}
+
+#form-container{
+    background-color: black;
+}
+
+#create-event_form{
+    color: white;
 }

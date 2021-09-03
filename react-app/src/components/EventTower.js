@@ -28,12 +28,12 @@ if (user) {
   return (
       <div id="event-tower__container">
         <div id='event-tower_header'>
-              <p>Event Tower</p>
-          <button onClick={() => setShowCreateEvent((prevState) => !prevState)}><span className="material-icons">add</span></button>
+              <h2 id='add-event_head-p'>Your Events</h2>
+          <p id='add-event_p' className="material-icons" onClick={() => setShowCreateEvent((prevState) => !prevState)}>add</p>
         </div>
 
           {showCreateEvent && (
-              <CreateEvent />
+              <CreateEvent showCreateEvent={showCreateEvent} setShowCreateEvent={setShowCreateEvent} />
           )}
 
         {userEvents && userEvents.map(event => (

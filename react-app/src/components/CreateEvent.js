@@ -4,7 +4,7 @@ import { useHistory } from "react-router-dom";
 import { createEventThunk } from "../store/events";
 
 
-const CreateEvent = () => {
+const CreateEvent = ({showCreateEvent, setShowCreateEvent}) => {
 	const [errors, setErrors] = useState([]);
 	const [event_title, setEventTitle] = useState("");
 	const [description, setDescription] = useState("");
@@ -17,7 +17,15 @@ const CreateEvent = () => {
 	const history = useHistory();
 
 
-
+	const handleCancel = (e) => {
+		e.preventDefault()
+		setErrors([])
+		setEventTitle("")
+		setDescription("")
+		setEventImg("")
+		setEventDateTime("")
+		setShowCreateEvent(!showCreateEvent)
+	}
 
 
 	const handleSubmit = async (e, error= false) => {
@@ -44,7 +52,7 @@ const CreateEvent = () => {
 			setErrors(prevState => [...prevState, "You must enter a date."])
 		}
 
-
+			console.log(event_date)
 		if (!error) {
 
 			const data = {
@@ -60,7 +68,7 @@ const CreateEvent = () => {
 			if (data) {
 
 				const eventData = await dispatch(createEventThunk(data));
-
+				setShowCreateEvent(!showCreateEvent);
 				if (eventData.errors) {
 					setErrors(eventData.errors)
 				}
@@ -71,8 +79,8 @@ const CreateEvent = () => {
 
 
 	return (
-		<div id="">
-			<form id="" onSubmit={handleSubmit}>
+		<div id="form-container">
+			<form id="create-event_form" onSubmit={handleSubmit}>
 				{errors.map((error, ind) => (
 					<div key={ind}>{error}</div>
 				))}
@@ -127,8 +135,9 @@ const CreateEvent = () => {
 					id=""
 					type="submit"
 					disabled={false}
-				>IT'S AN EVENT BUTTON COME ON
+				>Create Event?
 				</button>
+				<button onClick={(e) => handleCancel(e)}> Cancel</button>
 			</form>
 		</div>
 	);

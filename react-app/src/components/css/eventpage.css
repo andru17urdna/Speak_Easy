@@ -3,7 +3,6 @@
     top: 5vh;
     height: 95vh;
     width: 85vw;
-    background-color: lightcoral;
     display: grid;
     grid-template-columns: repeat(10, 8.5vw);
     grid-template-rows: repeat(9, 10vh);
@@ -11,15 +10,49 @@
 
 #event_div{
     height: 55vh;
-    width: 80vw;
-    grid-row: 1/ 7;
-    grid-column: 1/ span end;
+    width: 30vw;
+    grid-row: 2/ 8;
+    grid-column: 4/ 8;
     align-self: center;
     justify-self: center;
     background-color: linen;
+    border: black solid 2px;
+    display: grid;
+    grid-template-columns: repeat(3, 10vw);
+    grid-template-rows: repeat(5, 11vh);
+}
+
+#event_title{
+    grid-row: 1;
+    grid-column: 1/ span end;
+    justify-self: center;
+    text-align: center;
 }
 
 
 #event-page-event_img{
     width: 10vw;
+    grid-row: 1 /4;
+    align-self: center;
+    grid-column: 2;
+}
+
+#event_description{
+    grid-row: 4;
+    grid-column: 1/span end;
+    text-align: center;
+}
+
+#event_date{
+    grid-row: 5;
+    grid-column: 2/4;
+    align-self: center;
+    justify-self: center;
+}
+
+
+#event_creator-link{
+    grid-row: 5;
+    grid-column: 1;
+    align-self: end;
 }

@@ -4,12 +4,12 @@ import { editEventThunk } from "../../store/events";
 
 
 
-const EditEventForm = ({ event }) => {
+const EditEventForm = ({showEditField, setShowEditField, event}) => {
 	const [errors, setErrors] = useState([]);
-	const [event_title, setEventTitle] = useState("");
-	const [description, setDescription] = useState("");
-	const [event_img, setEventImg] = useState("");
-	const [event_date, setEventDateTime] = useState("08/25/2022 22:52:03");
+	const [event_title, setEventTitle] = useState(event.event_title);
+	const [description, setDescription] = useState(event.description);
+	const [event_img, setEventImg] = useState(event.event_img);
+	const [event_date, setEventDateTime] = useState(event.event_date);
 	const [private_event, setPrivateEvent] = useState(false);
     const dispatch = useDispatch();
 
@@ -50,7 +50,7 @@ const EditEventForm = ({ event }) => {
         if (!error) {
             if (data) {
                 const eventData = await dispatch(editEventThunk(data, event.id));
-
+                setShowEditField(!showEditField);
                 // if (eventData.errors) {
 				// 	setErrors(eventData.errors)
 				// }
@@ -62,9 +62,9 @@ const EditEventForm = ({ event }) => {
 
 
         return (
-            <div id="">
+            <>
 
-                <form id="" onSubmit={handleSubmit}>
+                <form id='edit-event_form' onSubmit={handleSubmit}>
                     {errors.map((error, ind) => (
                         <div key={ind}>{error}</div>
                     ))}
@@ -122,7 +122,7 @@ const EditEventForm = ({ event }) => {
                     >Edit Event?
                     </button>
                 </form>
-            </div>
+            </>
         );
 }
 
