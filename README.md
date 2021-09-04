@@ -123,7 +123,7 @@ pipenv shell
 
 5. In the root folder, create the database by running in the terminal:
 ```shell
-flask db create
+flask db init
 ```
 
 6. In the root folder, migrate tables to the database by running in the terminal:
@@ -196,5 +196,4 @@ print('add code snippet 1 here')
 
 
 ## Special Thanks
-* Fellow peers who have given me support and community: [Nico](https://github.com/nicopierson), [Henry](https://github.com/hnrywltn), [Pierre](https://github.com/TheGuilbotine), [Lema](https://github.com/lemlooma), [Meagan](https://github.com/meagan13), [Simon](https://github.com/Simonvargas), [Michelle](https://github.com/michellekontoff),  [John](https://github.com/Jomix-13), [Manna](https://github.com/makon57), and [Monte](https://github.com/theflaggship)
-* Mentors who have given me their time and effort: [Zach](https://github.com/zdwatts), [Olivia](https://github.com/OByrnes), [Ed](https://github.com/edherm), and [Javier](https://github.com/javiermortiz)
+* Fellow peers who have given me support and community: [Nico](https://github.com/nicopierson), [Henry](https://github.com/hnrywltn), [Pierre](https://github.com/TheGuilbotine), [Lema](https://github.com/lemlooma), [Meagan](https://github.com/meagan13), [Simon](https://github.com/Simonvargas), [Michelle](https://github.com/michellekontoff), [John](https://github.com/Jomix-13), [Manna](https://github.com/makon57), [Monte](https://github.com/theflaggship), [Diana](https://github.com/dianabeatriztinoco), and [Justice](https://github.com/jujmart)
