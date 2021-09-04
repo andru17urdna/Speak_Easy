@@ -3,7 +3,7 @@
 </p>
 
 # Speak-Easy
-Speak-Easy is a short description of the app. It is a fullstack React App made with a Redux state manager and a backend using Python, Flask, SQL-Alchemy, and PostgresSQL and any other technologies.
+Speak-Easy is a simple event planning website. You can create events, as well as send messages to other users. It is a fullstack React App made with a Redux state manager and a backend using Python, Flask, SQL-Alchemy, and PostgresSQL and any other technologies.
 
 * View the <a href='https://Speak-Easy-app.herokuapp.com/'>Speak-Easy</a> App Live
 
@@ -18,8 +18,11 @@ Speak-Easy is a short description of the app. It is a fullstack React App made w
 | 5. [Contact](#contact) |
 | 6. [Special Thanks](#special-thanks) |
 
-
+<br/><br/>
 ## Technologies
+---
+<br/>
+
 * <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript"><img src="https://img.shields.io/badge/-JavaScript-F7DF1E?logo=JavaScript&logoColor=333333" /></a>
 * <a href="https://www.postgresql.org/"><img src="https://img.shields.io/badge/-PostgreSQL-336791?logo=PostgreSQL&logoColor=white" /></a>
 * <a href="https://nodejs.org/"><img src="https://img.shields.io/badge/Node.js-43853D?style=flat&logo=node.js&logoColor=white"></a>
@@ -32,18 +35,19 @@ Speak-Easy is a short description of the app. It is a fullstack React App made w
 
 
 ## Features
+---
+<br/>
 
 ### Sign In and Sign Up
 ![Sign Up](./readme-assets/images/signup.jpg)
 ![Login](./readme-assets/images/login.jpg)
 
-### Feed Page
+### Logged In Home Page
 Speak-Easy feed displays all Events
-Discover and search for new Events
 ![Feed Page](./readme-assets/images/feed.jpg)
 
 ### View Events
-Single Events of name, photos, Messages
+Easily view Events on the Event page
 ![Events Page](./readme-assets/images/Events-page.jpg)
 
 ### Add Events
@@ -52,16 +56,42 @@ Add a new Events to the database
 Cancel adding Events
 ![Cancel Add Events](./readme-assets/images/Events-add-cancel.jpg)
 
-### Create, Read, Update, Delete Events Messages
-View Messages
+### Create, Read, Update, Delete Events
+View Events
 ![Messages](./readme-assets/images/Messages.png)
-Edit and Add Messages in the database
+Edit and Add Events in the database
 ![Edit Messages](./readme-assets/images/Messages-edit.png)
 ![Add Messages](./readme-assets/images/Messages-add.png)
 
-* Add any more features here
+
+
+### Notification/ Messages Modal
+Speak-Easy Messages/ Notifications can be found all in one place
+![Feed Page](./readme-assets/images/feed.jpg)
+
+### View Messages
+Easily view Messages on the Messages Modal
+![Events Page](./readme-assets/images/Events-page.jpg)
+
+### Add Messages
+Add a new Events to the database
+![Add Events](./readme-assets/images/Events-add.jpg)
+Cancel adding Events
+![Cancel Add Events](./readme-assets/images/Events-add-cancel.jpg)
+
+### Create, Read, Update, Delete Messages/ Notifications
+View Messages/ Notifications
+![Messages](./readme-assets/images/Messages.png)
+Edit and Add Messages/ Notifications in the database
+![Edit Messages](./readme-assets/images/Messages-edit.png)
+![Add Messages](./readme-assets/images/Messages-add.png)
+
+<br/><br/>
 
 ## Installation
+---
+<br/>
+
 To build/run project locally, please follow these steps:
 
 1. Clone this repository
@@ -118,7 +148,7 @@ npm start
 ```
 
 
-## Technical Implementation Details
+<!-- ## Technical Implementation Details
 
 ### {Detail 1}
 Description 1
@@ -142,14 +172,18 @@ Code snippet is shown here:
 
 ```javascript
 print('add code snippet 1 here')
-```
+``` -->
 
+<br/><br/>
 
 ## Future Features
-
+<br/>
+---
 1. __Search__ - search Events
 
-2. __Second Feature__ - second feature details
+2. __RSVP__ - RSVP to created events
+
+3. __Event QVC__ - Create a simple qvc as an inivitation for your event
 
 
 ## Contact
@@ -159,7 +193,6 @@ print('add code snippet 1 here')
 <a href="https://angel.co/u/{angel-list-handle}"><img src="./readme-assets/logos/angellist-logo.png" height="28" align="middle" /></a>
 <a href="https://github.com/andru17urdna"><img src="./readme-assets/logos/github-logo.png" height="38" align="middle" /></a>
 
-{email}
 
 
 ## Special Thanks

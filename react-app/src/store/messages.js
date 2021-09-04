@@ -9,6 +9,7 @@ import { deleteMessagesFromUser,
 const GET_ALL_MESSAGES = "messages/GET_ALL_MESSAGES"
 const CREATE_MESSAGE = "messages/CREATE_MESSAGE"
 const DELETE_MESSAGE = "messages/DELETE_MESSAGE"
+const DROP_MESSAGES = "messages/DROP_MESSAGES"
 
 
 
@@ -26,6 +27,10 @@ const createMessage = (message) => ({
 const deleteMessage = (id) => ({
     type: DELETE_MESSAGE,
     payload: id
+})
+
+const dropMessages = () => ({
+    type: DROP_MESSAGES
 })
 
 
@@ -106,7 +111,9 @@ export const deleteMessageThunk = (id, userId) => async (dispatch) => {
     }
 }
 
-
+export const dropMessage = () => async (dispatch) => {
+    dispatch(dropMessages())
+}
 
 
 
@@ -123,6 +130,8 @@ export default function messagesReducer(state = initialState, action) {
             const newDeleteState = {...state}
             delete newDeleteState[action.payload]
             return newDeleteState
+        case DROP_MESSAGES:
+            return initialState;
         default:
             return state
     }

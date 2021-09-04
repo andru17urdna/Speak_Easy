@@ -72,6 +72,8 @@ const GET_USER_EVENTS = "events/GET_USER_EVENTS"
 const CREATE_USER_EVENT = "events/CREATE_EVENT"
 const DELETE_USER_EVENT = "events/DELETE_EVENT"
 
+const DROP_USER_INFO = "events/DROP_USER_INFO"
+
 const getUserEvents = (userEventData) => ({
     type: GET_USER_EVENTS,
     userEventData
@@ -85,6 +87,10 @@ const createUserEvent = (event) => ({
 const deleteUserEvent = (id) => ({
     type: DELETE_USER_EVENT,
     payload: id
+})
+
+const dropUser = () => ({
+    type: DROP_USER_INFO
 })
 
 
@@ -108,6 +114,10 @@ export const deleteUserEventThunk = (id) => async (dispatch) => {
     dispatch(deleteUserEvent(id))
 }
 
+export const dropUserInfo = () => async (dispatch) => {
+    dispatch(dropUser())
+}
+
 
 const initialState = { toUserMessages: {},
                        fromUserMessages: {},
@@ -116,8 +126,9 @@ const initialState = { toUserMessages: {},
 
 export default function userInfoReducer(state = initialState, action) {
     switch (action.type) {
-
-
+        
+        case DROP_USER_INFO:
+            return initialState;
 
 // =================== GET USER INFO=======================================
         case GET_USER_MESSAGES:

@@ -1,18 +1,23 @@
 #nav-container{
-    background-color: lightblue;
+    border-bottom: black solid 2px;
+    background-color: gray;
     width: 100vw;
     height: 5vh;
     position: absolute;
     display: grid;
     grid-template-columns: repeat(10, 10vw);
+
 }
 
 .dropdown{
     position: relative;
+    padding-left: 10px;
     display: inline-block;
     grid-column: 9;
     justify-self: start;
     align-self: center;
+    border: solid black 1px;
+    background: #f9f9f9;
 }
 
 .dropdown-content{
@@ -23,15 +28,110 @@
     box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
     padding: 12px 16px;
     z-index: 4;
-    width: 18vw;
+    width: 7vw;
+    border: solid black 2px;
+    transition: 1s;
 }
 
 .dropdown:hover .dropdown-content {
     display: block;
   }
 
+.nav_a:hover{
+    color: rgb(216, 129, 129);
+    padding-left: 10px;
+}
+
+.nav_li{
+    list-style: none;
+}
+
+
+
+
+
+
 #message-container_div{
     height: 50vh;
     overflow-y: scroll;
     width: 18vw;
+}
+
+.message-container{
+    display: grid;
+    height: 30vh;
+    grid-template-columns: repeat(2, 9vw);
+    grid-template-rows: 5vh 10vh 12vh 3vh;
+}
+
+.edit_notification-errors{
+    justify-self: center;
+    color:red;
+    text-decoration: underline;
+}
+
+
+.message-delete_button{
+    color: red;
+    grid-row: 1;
+    grid-column: 2;
+    justify-self: end;
+    align-self: start;
+    /* transform: translate(60%, -40%); */
+    cursor: pointer;
+}
+
+.message-delete_button:hover{
+    color:rgb(134, 0, 0);
+}
+
+.from_username{
+    grid-row: 1;
+    grid-column: 1/ span end;
+    padding-left: 10px;
+}
+
+
+.message_text{
+    grid-row: 2;
+    grid-column: 1/ span end;
+    overflow-y: auto;
+    padding-left: 5px;
+}
+
+.message_sent{
+    grid-row: 4;
+    grid-column: 1/ span end;
+    justify-self: center;
+    align-self: center;
+}
+
+.show_edit{
+    grid-row: 3;
+    grid-column: 1;
+}
+
+.show_edit > span {
+    font-size: 40px;
+}
+
+.show_edit > span:hover{
+    color:gray;
+}
+
+.notification_edit-form{
+    grid-row: 3;
+    grid-column: 1/ span end;
+    align-self: center;
+    display: grid;
+}
+
+.notification_text-label{
+    justify-self: center;
+}
+
+.create-notif_button_div{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
 }

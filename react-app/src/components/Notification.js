@@ -17,27 +17,26 @@ const Notification = ({message}) => {
         if (message.from_user_id === user.id) {
 
         }
-
-
       }
   }, [dispatch])
 
 
   return (
       <>
-        <h2>From: {message.from_username}</h2>
-        <h2>Message ID: {message.id}</h2>
-        <h3>Message: {message.text}</h3>
-        <p>Sent: {message.created_at}</p>
+        <h2 className='from_username'> {message.from_user_id === user.id? `To: ${message.to_username}`: `From: ${message.from_username}`}</h2>
+        <p className='message_text'>{message.text}</p>
+        <p className='message_sent'>Sent: {message.created_at}</p>
 
         {(message.from_user_id === user.id) &&
-        <button onClick={() => setShowEditField((prevState) => !prevState)}>EDIT</button>
-          }
+        <p className='show_edit' onClick={() => setShowEditField((prevState) => !prevState)}>
+              {!showEditField ? <span class="material-icons">edit_note</span>
+                              :<span class="material-icons">close</span>
+              }
+        </p>
+      }
+      <p className='message-delete_button' onClick={() => dispatch(deleteMessageThunk(message.id, message.from_user_id))}><span class="material-icons">delete_forever</span></p>
         {showEditField && (
-          <div>
-                <EditNotification message={message} />
-                <button onClick={() => dispatch(deleteMessageThunk(message.id, message.from_user_id))}>DELETE</button>
-            </div>
+            <EditNotification message={message} showEditField={showEditField} setShowEditField={setShowEditField} />
         )}
       </>
   );

@@ -1,5 +1,4 @@
 #event-tower__container{
-    background-color: aquamarine;
     position: fixed;
     top: 5vh;
     width: 15vw;
@@ -9,16 +8,208 @@
     display: grid;
     grid-template-rows: repeat();
     row-gap: 1vh;
+    border-left: solid black 2px;
 }
 
 #event-tower_header{
     height: 8vh;
-    background-color: lightyellow;
+    background-color: black;
     display: grid;
+    grid-template-columns: repeat(2, 7vw);
+    grid-template-rows: repeat(2, 4vh);
+    position: sticky;
+    top: 0px;
+    color: white;
+    z-index: 2;
 }
 
 .event-tower_event-div{
     width: 13vw;
-    background-color: lightskyblue;
     justify-self: center;
+}
+
+#add-event_p{
+    font-size: 40px;
+    grid-row: 1;
+    grid-column: 2;
+    justify-self: end;
+}
+
+#add-event_p:hover{
+    color: gray;
+    cursor: pointer;
+}
+
+
+#add-event_head-p{
+    font-size: 30px;
+    grid-row: 2;
+    grid-column: 1 /span end;
+    justify-self: center;
+    align-self: center;
+}
+
+.event-card_container{
+    border: black solid 2px;
+    width: 12vw;
+    height: 40vh;
+    display: grid;
+    grid-template-columns: repeat(4, 3vw);
+    grid-template-rows: repeat(4,10vh );
+}
+
+.eventcard_container-editfield{
+    border: black solid 2px;
+    display: grid;
+    width: 12vw;
+    height: 80vh;
+    grid-template-columns: repeat(4, 3vw);
+    grid-template-rows: repeat(4, 10vh ) 40vh;
+}
+
+.event-card_title{
+    grid-row: 1;
+    grid-column: 1/ span end;
+    font-size: 10px;
+    text-align: center;
+}
+
+.event-card-event_img{
+    width: 9vw;
+    justify-self: center;
+    grid-row: 2/ 4;
+    grid-column: 1/ span end;
+}
+
+
+.event-card_description{
+    font-size: 15px;
+    grid-row: 4;
+    grid-column: 1/span end;
+    padding-left: 6px;
+    padding-right: 4px;
+}
+
+.event-card_user-link{
+    grid-row: 1;
+    grid-column: 1/ span end;
+    color:white;
+    align-self: end;
+    padding-bottom: 5px;
+}
+
+.event-card_date{
+    font-size: 15px;
+    grid-row: 4;
+    grid-column: 1/span end;
+    align-self: end;
+    padding-left: 6px;
+    padding-right: 4px;
+}
+
+.event-card_edit-swap{
+    grid-column: 4;
+    grid-row: 4;
+    align-self: end;
+    justify-self: end;
+    transform: translate(-50%, -20%);
+}
+
+.event-card_edit-swap > span {
+    font-size: 40px;
+    color: black;
+}
+
+.event-card_edit-swap > span:hover {
+    color: red;
+}
+
+
+.event-card_edit-swap-active{
+    font-size: 20px;
+    grid-column: 4;
+    grid-row: 4;
+    align-self: end;
+    justify-self: center;
+    transform: translate(65%, 190% );
+    color:black;
+    cursor: pointer;
+}
+
+.event-card_edit-swap-active:hover{
+    color: gray;
+}
+
+.delete_event{
+    grid-column: 1;
+    grid-row: 5;
+    justify-self: end;
+    align-self: start;
+    transform: translate(-30%, 80%);
+    color: red;
+    cursor: pointer;
+}
+
+.delete_event:hover{
+    color:rgb(165, 55, 55);
+}
+
+.delete_event > span {
+    font-size: 40px;
+}
+
+.event-card_edit-form-div{
+    border-top: solid black 2px;
+    height: 37vh;
+    grid-row: 5;
+    grid-column: 1 /span end;
+    align-self: end;
+    display: grid;
+}
+
+.edit_event-header{
+    justify-self: center;
+    height: 3vh;
+}
+
+
+#edit-event_form{
+    display: grid;
+    align-self: center;
+    height: 30vh;
+}
+
+.edit-event_button_div{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+#form-container{
+    margin-top: -1vh;
+    height: 30vh;
+}
+
+#add-event_h2{
+    margin-top: -1vh;
+    justify-self: center;
+}
+
+#create-event_form{
+    border-bottom: solid 2px black;
+    height: 30vh;
+    display: grid;
+}
+
+.event-edit_errors{
+    justify-self: center;
+    color:red;
+    text-decoration: underline;
+}
+
+
+#create-button_div{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
 }

@@ -4,7 +4,7 @@ import { useHistory } from "react-router-dom";
 import { createEventThunk } from "../store/events";
 
 
-const CreateEvent = () => {
+const CreateEvent = ({showCreateEvent, setShowCreateEvent}) => {
 	const [errors, setErrors] = useState([]);
 	const [event_title, setEventTitle] = useState("");
 	const [description, setDescription] = useState("");
@@ -17,21 +17,39 @@ const CreateEvent = () => {
 	const history = useHistory();
 
 
-
+	const handleCancel = (e) => {
+		e.preventDefault()
+		setErrors([])
+		setEventTitle("")
+		setDescription("")
+		setEventImg("")
+		setEventDateTime("")
+		setShowCreateEvent(!showCreateEvent)
+	}
 
 
 	const handleSubmit = async (e, error= false) => {
 		e.preventDefault();
 		setErrors([]);
 
-		if (event_title.length < 10 || event_title.length > 50 ) {
+		if (event_title.length < 10) {
 			error= true;
-			setErrors(prevState => [...prevState, "Event title is incorrect length."])
+			setErrors(prevState => [...prevState, "Event title is too short."])
 		}
 
-		if (description.length < 20 || description.length > 255) {
+        if (event_title.length > 50) {
+            error= true;
+            setErrors(prevState => [...prevState, "Event title is too long"])
+        }
+
+		if (description.length < 20) {
 			error = true;
-			setErrors(prevState => [...prevState, "Description is incorrect length."])
+			setErrors(prevState => [...prevState, "Description is too short."])
+		}
+
+		if (description.length > 75) {
+			error = true;
+			setErrors(prevState => [...prevState, "Description is too long."])
 		}
 
 		if (event_img.length > 1000) {
@@ -60,7 +78,7 @@ const CreateEvent = () => {
 			if (data) {
 
 				const eventData = await dispatch(createEventThunk(data));
-
+				setShowCreateEvent(!showCreateEvent);
 				if (eventData.errors) {
 					setErrors(eventData.errors)
 				}
@@ -71,10 +89,10 @@ const CreateEvent = () => {
 
 
 	return (
-		<div id="">
-			<form id="" onSubmit={handleSubmit}>
+		<div id="form-container">
+			<form id="create-event_form" onSubmit={handleSubmit}>
 				{errors.map((error, ind) => (
-					<div key={ind}>{error}</div>
+					<div className='event-edit_errors' key={ind}>{error}</div>
 				))}
 
 
@@ -107,7 +125,6 @@ const CreateEvent = () => {
 					type="text"
 					placeholder="URL link to image"
 					value={event_img}
-					required
 					onChange={(e) => {
 						setEventImg(e.target.value);
 					}}
@@ -122,13 +139,15 @@ const CreateEvent = () => {
 					}}
                     value={event_date}
                 />
-
+			<div id='create-button_div'>
 				<button
 					id=""
 					type="submit"
 					disabled={false}
-				>IT'S AN EVENT BUTTON COME ON
+				>Create Event?
 				</button>
+				<button onClick={(e) => handleCancel(e)}> Cancel</button>
+			</div>
 			</form>
 		</div>
 	);

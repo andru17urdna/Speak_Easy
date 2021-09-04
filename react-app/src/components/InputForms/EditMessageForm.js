@@ -3,9 +3,9 @@ import {  useDispatch } from "react-redux";
 import { editMessageThunk } from "../../store/messages";
 
 
-const EditNotification = ({message}) => {
+const EditNotification = ({message, showEditField, setShowEditField}) => {
 	const [errors, setErrors] = useState([]);
-	const [text, setText] = useState("");
+	const [text, setText] = useState(message.text);
 	const [invite, setInvite] = useState(false);
 	const [disabledSubmitButton, setDisabledSubmitButton] = useState(false);
     const [users, setUsers] = useState([]);
@@ -35,7 +35,7 @@ const EditNotification = ({message}) => {
 
 			if (data) {
 				const messageData = await dispatch(editMessageThunk(data, message.id));
-
+				setShowEditField(!showEditField)
 				if (messageData) {
 					setErrors(messageData.errors)
 				}
@@ -45,18 +45,19 @@ const EditNotification = ({message}) => {
 
 
 	return (
-		<div id="">
-			<form id="" onSubmit={handleSubmit}>
+		<>
+			<form className='notification_edit-form' onSubmit={handleSubmit}>
 				{errors.map((error, ind) => (
-					<div key={ind}>{error}</div>
+					<div className='edit_notification-errors' key={ind}>{error}</div>
 				))}
 
-				<label htmlFor="text">Text</label>
-				<input
+				<label className='notification_text-label' htmlFor="text">Notification Text </label>
+				<textarea
 					name="text"
 					type="text"
 					placeholder="Your Message Here"
 					value={text}
+					rows="3" cols="33"
 					required
 					onChange={(e) => {
 						setText(e.target.value);
@@ -66,10 +67,10 @@ const EditNotification = ({message}) => {
 					id=""
 					type="submit"
 					disabled={disabledSubmitButton}
-				>IT'S A BUTTON COME ON
+				>Submit Edit?
 				</button>
 			</form>
-		</div>
+		</>
 	);
 }
 

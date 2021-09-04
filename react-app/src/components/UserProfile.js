@@ -39,16 +39,18 @@ const UserProfile = () => {
     return (
         <div id='profile-page'>
             <div id='user-info-conatiner'>
-                <h1>{isCurrentUser ? "Your Profile" : profileUser.user_name}</h1>
+                <h1 id='profile_user-id'>{isCurrentUser ? "Your Profile" : profileUser.user_name}</h1>
                 <img id='user-image' src={profileUser.user_img}></img>
-                <p>{profileUser.description}</p>
+                <p id='user-description'>{profileUser.description}</p>
             </div>
                 <h1 id='created-events_header'>{isCurrentUser ? "Your" : profileUser.user_name + "'s" } Created Events:</h1>
             <div id = 'profile-events'>
                {userEvents && Object.values(userEvents).map(event =>(
                    <div className='profile-event-container' key={event.id}>
-                       <NavLink to={`/event/${event.id}`}><h1>{event.event_title}</h1></NavLink>
+                       <NavLink to={`/event/${event.id}`}><h1 id='profile_event-title'>{event.event_title}</h1></NavLink>
+                       <img id='user-profile-event-img' src={event.event_img}></img>
                        <p>{event.description}</p>
+                       <p>{event.event_date}</p>
                    </div>
 
                ))}

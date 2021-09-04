@@ -4,12 +4,12 @@ import { editEventThunk } from "../../store/events";
 
 
 
-const EditEventForm = ({ event }) => {
+const EditEventForm = ({showEditField, setShowEditField, event}) => {
 	const [errors, setErrors] = useState([]);
-	const [event_title, setEventTitle] = useState("");
-	const [description, setDescription] = useState("");
-	const [event_img, setEventImg] = useState("");
-	const [event_date, setEventDateTime] = useState("08/25/2022 22:52:03");
+	const [event_title, setEventTitle] = useState(event.event_title);
+	const [description, setDescription] = useState(event.description);
+	const [event_img, setEventImg] = useState(event.event_img);
+	const [event_date, setEventDateTime] = useState(event.event_date);
 	const [private_event, setPrivateEvent] = useState(false);
     const dispatch = useDispatch();
 
@@ -19,14 +19,24 @@ const EditEventForm = ({ event }) => {
 
         setErrors([]);
 
-		if (event_title.length < 10 || event_title.length > 50 ) {
+		if (event_title.length < 10) {
 			error= true;
-			setErrors(prevState => [...prevState, "Event title is incorrect length."])
+			setErrors(prevState => [...prevState, "Event title is too short."])
 		}
 
-		if (description.length < 20 || description.length > 255) {
+        if (event_title.length > 50) {
+            error= true;
+            setErrors(prevState => [...prevState, "Event title is too long"])
+        }
+
+		if (description.length < 20) {
 			error = true;
-			setErrors(prevState => [...prevState, "Description is incorrect length."])
+			setErrors(prevState => [...prevState, "Description is too short."])
+		}
+
+		if (description.length > 75) {
+			error = true;
+			setErrors(prevState => [...prevState, "Description is too long."])
 		}
 
 		if (event_img.length > 1000) {
@@ -50,7 +60,7 @@ const EditEventForm = ({ event }) => {
         if (!error) {
             if (data) {
                 const eventData = await dispatch(editEventThunk(data, event.id));
-
+                setShowEditField(!showEditField);
                 // if (eventData.errors) {
 				// 	setErrors(eventData.errors)
 				// }
@@ -62,11 +72,11 @@ const EditEventForm = ({ event }) => {
 
 
         return (
-            <div id="">
-
-                <form id="" onSubmit={handleSubmit}>
+            <>
+                    <h2 className='edit_event-header'>Edit Event</h2>
+                <form id='edit-event_form' onSubmit={handleSubmit}>
                     {errors.map((error, ind) => (
-                        <div key={ind}>{error}</div>
+                        <div className='event-edit_errors' key={ind}>{error}</div>
                     ))}
 
 
@@ -99,7 +109,6 @@ const EditEventForm = ({ event }) => {
                         type="text"
                         placeholder="URL link to image"
                         value={event_img}
-                        required
                         onChange={(e) => {
                             setEventImg(e.target.value);
                         }}
@@ -114,15 +123,16 @@ const EditEventForm = ({ event }) => {
                         }}
                         value={event_date}
                     />
-
-                    <button
-                        id=""
-                        type="submit"
-                        disabled={false}
-                    >Edit Event?
-                    </button>
+                    <div className='edit-event_button_div'>
+                        <button
+                            id=""
+                            type="submit"
+                            disabled={false}
+                        >Edit Event?
+                        </button>
+                    </div>
                 </form>
-            </div>
+            </>
         );
 }
 

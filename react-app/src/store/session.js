@@ -1,3 +1,8 @@
+import { dropEvent } from "./events";
+import { dropUserInfo } from "./UserInfo";
+import { dropMessage } from "./messages";
+
+
 // constants
 const SET_USER = 'session/SET_USER';
 const REMOVE_USER = 'session/REMOVE_USER';
@@ -65,7 +70,10 @@ export const logout = () => async (dispatch) => {
   });
 
   if (response.ok) {
-    dispatch(removeUser());
+    dispatch(removeUser())
+    dispatch(dropEvent())
+    dispatch(dropMessage())
+    dispatch(dropUserInfo())
   }
 };
 
