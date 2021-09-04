@@ -19,14 +19,24 @@ const EditEventForm = ({showEditField, setShowEditField, event}) => {
 
         setErrors([]);
 
-		if (event_title.length < 10 || event_title.length > 50 ) {
+		if (event_title.length < 10) {
 			error= true;
-			setErrors(prevState => [...prevState, "Event title is incorrect length."])
+			setErrors(prevState => [...prevState, "Event title is too short."])
 		}
 
-		if (description.length < 20 || description.length > 255) {
+        if (event_title.length > 50) {
+            error= true;
+            setErrors(prevState => [...prevState, "Event title is too long"])
+        }
+
+		if (description.length < 20) {
 			error = true;
-			setErrors(prevState => [...prevState, "Description is incorrect length."])
+			setErrors(prevState => [...prevState, "Description is too short."])
+		}
+
+		if (description.length > 75) {
+			error = true;
+			setErrors(prevState => [...prevState, "Description is too long."])
 		}
 
 		if (event_img.length > 1000) {
@@ -63,10 +73,10 @@ const EditEventForm = ({showEditField, setShowEditField, event}) => {
 
         return (
             <>
-
+                    <h2 className='edit_event-header'>Edit Event</h2>
                 <form id='edit-event_form' onSubmit={handleSubmit}>
                     {errors.map((error, ind) => (
-                        <div key={ind}>{error}</div>
+                        <div className='event-edit_errors' key={ind}>{error}</div>
                     ))}
 
 
@@ -99,7 +109,6 @@ const EditEventForm = ({showEditField, setShowEditField, event}) => {
                         type="text"
                         placeholder="URL link to image"
                         value={event_img}
-                        required
                         onChange={(e) => {
                             setEventImg(e.target.value);
                         }}
@@ -114,13 +123,14 @@ const EditEventForm = ({showEditField, setShowEditField, event}) => {
                         }}
                         value={event_date}
                     />
-
-                    <button
-                        id=""
-                        type="submit"
-                        disabled={false}
-                    >Edit Event?
-                    </button>
+                    <div className='edit-event_button_div'>
+                        <button
+                            id=""
+                            type="submit"
+                            disabled={false}
+                        >Edit Event?
+                        </button>
+                    </div>
                 </form>
             </>
         );

@@ -35,6 +35,11 @@
     justify-self: end;
 }
 
+#add-event_p:hover{
+    color: gray;
+    cursor: pointer;
+}
+
 
 #add-event_head-p{
     font-size: 30px;
@@ -125,42 +130,86 @@
     grid-column: 4;
     grid-row: 4;
     align-self: end;
-    justify-self: end;
-    transform: translate(-90%, -40%);
+    justify-self: center;
+    transform: translate(65%, 190% );
     color:black;
+    cursor: pointer;
+}
+
+.event-card_edit-swap-active:hover{
+    color: gray;
 }
 
 .delete_event{
-    grid-column: 4;
-    grid-row: 1;
+    grid-column: 1;
+    grid-row: 5;
     justify-self: end;
     align-self: start;
-    transform: translate(50%,-50%);
-    font-size: 30px;
+    transform: translate(-30%, 80%);
     color: red;
+    cursor: pointer;
+}
 
+.delete_event:hover{
+    color:rgb(165, 55, 55);
+}
+
+.delete_event > span {
+    font-size: 40px;
 }
 
 .event-card_edit-form-div{
+    border-top: solid black 2px;
     height: 37vh;
     grid-row: 5;
     grid-column: 1 /span end;
     align-self: end;
     display: grid;
-    background-color: gray;
+}
+
+.edit_event-header{
+    justify-self: center;
+    height: 3vh;
 }
 
 
 #edit-event_form{
     display: grid;
     align-self: center;
-    height: 100%;
+    height: 30vh;
+}
+
+.edit-event_button_div{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
 }
 
 #form-container{
-    background-color: black;
+    margin-top: -1vh;
+    height: 30vh;
+}
+
+#add-event_h2{
+    margin-top: -1vh;
+    justify-self: center;
 }
 
 #create-event_form{
-    color: white;
+    border-bottom: solid 2px black;
+    height: 30vh;
+    display: grid;
+}
+
+.event-edit_errors{
+    justify-self: center;
+    color:red;
+    text-decoration: underline;
+}
+
+
+#create-button_div{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
 }

@@ -33,3 +33,32 @@ body {
   ::-webkit-scrollbar-thumb:hover {
     background:darkslategray;
   }
+
+
+button{
+background-color: whitesmoke; /* Green */
+border: black solid 1px;
+color: white;
+padding: 2px 6px;
+text-align: center;
+text-decoration: none;
+display: inline-block;
+font-size: 14px;
+color: black;
+max-width: 5vw;
+max-height: 5vh;
+}
+
+
+button:hover{
+  background-color: #c8c8c8;
+}
+
+
+input,
+textarea,
+select{
+  border: solid black 2px;
+  margin-left: 5px;
+  margin-right: 5px;
+}

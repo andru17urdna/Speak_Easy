@@ -12,7 +12,7 @@ const HomepageLoggedIn = () => {
     }, [dispatch]);
 
     const user = useSelector(state => state.session.user)
-    const events = useSelector((state) => Object.values(state.events))
+    const events = useSelector((state) => Object.values(state.events).reverse())
 
 
     return (

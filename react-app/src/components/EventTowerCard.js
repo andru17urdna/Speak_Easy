@@ -31,7 +31,9 @@ const EventTowerCard = ({event}) => {
                 </p>
 
                 {showEditField && (
-                    <p className='delete_event' onClick={() => handleDelete(event.id)}><span class="material-icons">cancel</span></p>
+                    <p className='delete_event' onClick={() => handleDelete(event.id)}><span class="material-icons">
+                    delete_forever
+                    </span></p>
                 )}
 
                 {showEditField && (

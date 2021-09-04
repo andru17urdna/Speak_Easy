@@ -95,7 +95,7 @@ const CreateNotification = () => {
 
 			<form id="create_notification" onSubmit={handleSubmit}>
 				{errors.map((error, ind) => (
-					<div key={ind}>{error}</div>
+					<div className='edit_notification-errors' key={ind}>{error}</div>
 				))}
 
 				<label htmlFor="">To User: </label>
@@ -116,7 +116,7 @@ const CreateNotification = () => {
 				<textarea
 					name="text"
 					type="text"
-					autocomplete="off"
+					autoComplete="off"
 					placeholder="Your Message Here"
 					rows="2" cols="33"
 					value={text}
@@ -125,13 +125,15 @@ const CreateNotification = () => {
 						setText(e.target.value);
 					}}
 				/>
-				<button
-					id=""
-					type="submit"
-					disabled={disabledSubmitButton}
-				>Create Notification
-				</button>
-				<button onClick={(e)=> handleCancel(e)}>Cancel</button>
+				<div className='create-notif_button_div'>
+					<button
+						id=""
+						type="submit"
+						disabled={disabledSubmitButton}
+					>Create Notification
+					</button>
+					<button onClick={(e)=> handleCancel(e)}>Cancel</button>
+				</div>
 			</form>
 
 	);

@@ -8,7 +8,7 @@ function UserMessagesModal() {
 
   return (
 		<>
-			<button
+			<button className='button'
 				onClick={() => setShowModal(true)}
 			>Your Notifications
             </button>

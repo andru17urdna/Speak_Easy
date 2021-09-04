@@ -15,7 +15,7 @@ const EventTower = () => {
 
 
     const user = useSelector(state => state.session.user)
-    const userEvents = useSelector(state =>  Object.values(state.userInfo.userEvents))
+    const userEvents = useSelector(state =>  Object.values(state.userInfo.userEvents).reverse())
 
     useEffect(() => {
         if (user) {
@@ -33,7 +33,10 @@ if (user) {
         </div>
 
           {showCreateEvent && (
-              <CreateEvent showCreateEvent={showCreateEvent} setShowCreateEvent={setShowCreateEvent} />
+              <>
+                <h2 id='add-event_h2'>Adding Event:</h2>
+                <CreateEvent showCreateEvent={showCreateEvent} setShowCreateEvent={setShowCreateEvent} />
+              </>
           )}
 
         {userEvents && userEvents.map(event => (

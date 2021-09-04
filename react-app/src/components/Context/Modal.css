@@ -23,11 +23,11 @@
   position: absolute;
   background-color:white;
   width: 40vw;
-  height: 70vh;
+  height: 75vh;
   padding: 25px;
   display: grid;
   grid-template-columns: repeat(2, 20vw);
-  grid-template-rows: 4vh 15vh 4vh 40vh ;
+  grid-template-rows: 4vh 20vh 4vh 40vh ;
   row-gap: 2vh;
   border: black solid 2px;
 }
