@@ -75,3 +75,98 @@
 #create_notification{
   display: grid;
 }
+
+
+
+/* ==============================LOGIN-FORM =============================== */
+
+#login-modal{
+  position: fixed;
+  top: 0;
+  right: 0;
+  left: 0;
+  bottom: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+
+#login-modal-background{
+  position: fixed;
+  top: 0;
+  right: 0;
+  left: 0;
+  bottom: 0;
+  background-color: rgba(128, 128, 128, .7);
+}
+
+
+#login-modal-content{
+  position: absolute;
+  background-color:white;
+  width: 30vw;
+  height: 20vh;
+  padding: 25px;
+  /* display: grid;
+  grid-template-columns: repeat(2, 20vw);
+  grid-template-rows: 4vh 20vh 4vh 40vh ; */
+  row-gap: 2vh;
+  border: black solid 2px;
+}
+
+
+/* ============================Sign Up Modal  ======================= */
+
+
+#signup-modal{
+  position: fixed;
+  top: 0;
+  right: 0;
+  left: 0;
+  bottom: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+
+#signup-modal-background{
+  position: fixed;
+  top: 0;
+  right: 0;
+  left: 0;
+  bottom: 0;
+  background-color: rgba(128, 128, 128, .7);
+}
+
+
+#signup-modal-content{
+  position: absolute;
+  background-color:white;
+  width: 20vw;
+  height: 40vh;
+  border: black solid 2px;
+}
+
+#sign-up_form{
+  top: 0;
+  display: grid;
+  width: 20vw;
+  height: 40vh;
+  grid-template-columns: repeat(1, 20vw);
+}
+
+#sign-up_h1{
+  justify-self: center;
+}
+
+
+.input_container-div{
+  justify-self: center;
+}
+
+
+#sign-up_button{
+  justify-self: center;
+}

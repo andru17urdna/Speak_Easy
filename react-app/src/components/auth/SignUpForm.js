@@ -9,31 +9,49 @@ const SignUpForm = () => {
   const [errors, setErrors] = useState([]);
   const [username, setUsername] = useState('');
   const [availableUsername, setAvailableUsername] =useState('');
+  const [userNameColor, setUserNameColor] =useState({})
+  const [emailColor, setEmailColor] =useState({})
   const [email, setEmail] = useState('');
   const [availableEmail, setAvailableEmail] = useState('');
   const [password, setPassword] = useState('');
   const [repeatPassword, setRepeatPassword] = useState('');
+
   const user = useSelector(state => state.session.user);
   const dispatch = useDispatch();
 
   const onSignUp = async (e, error= false) => {
     e.preventDefault();
-      if (password === repeatPassword) {
+      setErrors([]);
+
+      if (!email.includes('@') || !email.includes('.')) {
+        setErrors(prevState => [...prevState, "Please enter a valid email."])
+          error= true;
+      }
+
+      if (password !== repeatPassword) {
+        setErrors(prevState => [...prevState, "Passwords do not match."])
+        error= true;
+      }
+
+      if (!error) {
         const data = await dispatch(signUp(username, email, password));
         if (data) {
           setErrors(data)
         }
-      } else {
-        setErrors(["Passwords do not match."])
       }
   };
-
 
 
   const checkUsername = async (e) => {
     const data = await dispatch(usernameCheck(e))
       if (data.message) {
+        console.log(data.message)
         setAvailableUsername(data.message)
+          if(data.message === "User Name is already in use."){
+            setUserNameColor({color:'red'})
+          } else {
+            setUserNameColor({color:'green'})
+          }
       }
   }
 
@@ -49,6 +67,11 @@ const SignUpForm = () => {
     const data = await dispatch(emailCheck(e))
     if (data.message) {
       setAvailableEmail(data.message)
+      if(data.message === "Email is already in use."){
+        setEmailColor({color:'red'})
+      } else {
+        setEmailColor({color:'green'})
+      }
     }
   }
 
@@ -56,7 +79,7 @@ const SignUpForm = () => {
     setEmail(e.target.value);
 
     if (e.target.value.includes('@')
-    || e.target.value.includes('.')) {
+    && e.target.value.includes('.')) {
       checkEmail(e.target.value)
     }
   };
@@ -64,7 +87,7 @@ const SignUpForm = () => {
 
 
 
-  
+
   const updatePassword = (e) => {
     setPassword(e.target.value);
   };
@@ -79,12 +102,13 @@ const SignUpForm = () => {
 
   return (
     <form id='sign-up_form' onSubmit={onSignUp}>
+      <h1 id='sign-up_h1'>Sign Up</h1>
       <div>
         {errors.map((error, ind) => (
           <div key={ind}>{error}</div>
         ))}
       </div>
-      <div>
+      <div className='input_container-div'>
         <label>User Name</label>
         <input
           type='text'
@@ -94,11 +118,11 @@ const SignUpForm = () => {
         ></input>
       {availableUsername && (
         <>
-          <p>{availableUsername}</p>
+          <p style={userNameColor}>{availableUsername}</p>
         </>
       )}
       </div>
-      <div>
+      <div className='input_container-div'>
         <label>Email</label>
         <input
           type='text'
@@ -108,11 +132,11 @@ const SignUpForm = () => {
         ></input>
         {availableEmail && (
           <>
-          <p>{availableEmail}</p>
+          <p style={emailColor}>{availableEmail}</p>
           </>
         )}
       </div>
-      <div>
+      <div className='input_container-div'>
         <label>Password</label>
         <input
           type='password'
@@ -121,7 +145,7 @@ const SignUpForm = () => {
           value={password}
         ></input>
       </div>
-      <div>
+      <div className='input_container-div'>
         <label>Repeat Password</label>
         <input
           type='password'
@@ -131,7 +155,7 @@ const SignUpForm = () => {
           required={true}
         ></input>
       </div>
-      <button type='submit'>Sign Up</button>
+      <button id='sign-up_button' type='submit'>Sign Up</button>
     </form>
   );
 };

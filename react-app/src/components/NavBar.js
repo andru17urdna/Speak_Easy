@@ -10,8 +10,7 @@ import { Modal } from './Context/Modal';
 import { login } from '../store/session';
 
 import "./css/navbar.css";
-import UserMessages from './UserMessages/UserMessages';
-import UserMessagesModal from './UserMessages/'
+import MultiModal from './UserMessages/'
 
 const NavBar = () => {
 
@@ -61,21 +60,16 @@ const NavBar = () => {
         </ul>
         </div>
       </div>
-    <UserMessagesModal />
+    <MultiModal />
     </nav>
   );
   } else {
     return (
       <nav id='nav-container'>
-          <NavLink to='/login' exact={true} activeClassName='active'>
-            Login
-          </NavLink>
-          <NavLink to='/sign-up' exact={true} activeClassName='active'>
-            Sign Up
-          </NavLink>
           <button onClick={demoUserLogin}>
             DEMO
           </button>
+          <MultiModal />
       </nav>
     )
   }

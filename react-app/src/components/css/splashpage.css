@@ -12,6 +12,21 @@
     }
 }
 
+@keyframes onLoad-p {
+
+    0%{
+        color: transparent;
+    }
+    50%{
+        color: transparent;
+    }
+
+    100%{
+        color: black;
+    }
+}
+
+
 #splash-page_container-div{
     position: relative;
     top: 5vh;
@@ -29,7 +44,7 @@
     grid-column: 7/ 10;
     letter-spacing: 10px;
     animation-name: onLoad;
-    animation-duration: 5s;
+    animation-duration: 4s;
     text-decoration: line-through solid black 2px;
 }
 
@@ -38,6 +53,9 @@
     grid-column: 7;
     font-size: 20px;
     transform: translate(50%);
+    animation-name: onLoad-p;
+    animation-duration: 5s;
+    color: black;
 }
 
 #splash-page_send{
@@ -46,6 +64,8 @@
     align-self: center;
     font-size: 20px;
     transform: translate(40%);
+    animation-name: onLoad-p;
+    animation-duration: 6s;
 }
 
 #splash-page_account{
@@ -54,4 +74,6 @@
     align-self: end;
     font-size: 20px;
     transform: translate(10%);
+    animation-name: onLoad-p;
+    animation-duration: 7s;
 }

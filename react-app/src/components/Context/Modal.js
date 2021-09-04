@@ -9,6 +9,7 @@ export function ModalProvider({ children }) {
   const modalRef = useRef();
   const [value, setValue] = useState();
 
+
   useEffect(() => {
     setValue(modalRef.current);
   }, [])
@@ -23,17 +24,46 @@ export function ModalProvider({ children }) {
   );
 }
 
-export function Modal({ onClose, children }) {
+export function Modal({ onClose, code, children }) {
   const modalNode = useContext(ModalContext);
   if (!modalNode) return null;
 
-  return ReactDOM.createPortal(
-    <div id="modal">
-      <div id="modal-background" onClick={onClose} />
-      <div id="modal-content">
-        {children}
-      </div>
-    </div>,
-    modalNode
-  );
+  switch(code) {
+    case "login":
+
+      return ReactDOM.createPortal(
+        <div id="login-modal">
+          <div id="login-modal-background" onClick={onClose} />
+          <div id="login-modal-content">
+            {children}
+          </div>
+        </div>,
+        modalNode
+      );
+
+    case "signup":
+
+      return ReactDOM.createPortal(
+        <div id="signup-modal">
+          <div id="signup-modal-background" onClick={onClose} />
+          <div id="signup-modal-content">
+            {children}
+          </div>
+        </div>,
+        modalNode
+      );
+
+    default:
+      return ReactDOM.createPortal(
+        <div id="modal">
+          <div id="modal-background" onClick={onClose} />
+          <div id="modal-content">
+            {children}
+          </div>
+        </div>,
+        modalNode
+      );
+  }
+
+
 }
