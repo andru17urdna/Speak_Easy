@@ -107,7 +107,6 @@
   background-color:white;
   width: 30vw;
   height: 20vh;
-  padding: 25px;
   /* display: grid;
   grid-template-columns: repeat(2, 20vw);
   grid-template-rows: 4vh 20vh 4vh 40vh ; */
@@ -169,4 +168,37 @@
 
 #sign-up_button{
   justify-self: center;
+  margin-bottom: 10px;
+}
+
+.signup_errors{
+  text-align: center;
+    color:red;
+    text-decoration: underline;
+}
+
+
+/* ============================ Login Form ================================= */
+
+#log-in_form{
+  width: 30vw;
+  height: 20vh;
+  display: grid;
+  top: 0;
+}
+
+.login-form_errors{
+  text-align: center;
+  color:red;
+  text-decoration: underline;
+}
+
+.sign-up_form-input{
+  justify-self: center;
+}
+
+
+#log-in_form-button{
+  justify-self: center;
+  padding: 10px;
 }

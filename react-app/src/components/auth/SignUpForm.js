@@ -15,6 +15,8 @@ const SignUpForm = () => {
   const [availableEmail, setAvailableEmail] = useState('');
   const [password, setPassword] = useState('');
   const [repeatPassword, setRepeatPassword] = useState('');
+  const [user_img, setUserImg] =useState('');
+  const [description, setDescription] =useState('')
 
   const user = useSelector(state => state.session.user);
   const dispatch = useDispatch();
@@ -105,7 +107,7 @@ const SignUpForm = () => {
       <h1 id='sign-up_h1'>Sign Up</h1>
       <div>
         {errors.map((error, ind) => (
-          <div key={ind}>{error}</div>
+          <div className='signup_errors' key={ind}>{error}</div>
         ))}
       </div>
       <div className='input_container-div'>
@@ -152,6 +154,25 @@ const SignUpForm = () => {
           name='repeat_password'
           onChange={updateRepeatPassword}
           value={repeatPassword}
+          required={true}
+        ></input>
+      </div>
+      <div className='input_container-div'>
+        <label>Profile Image</label>
+        <input
+          type='text'
+          name='user_image'
+          onChange={(e) => setUserImg(e.target.value)}
+          value={user_img}
+        ></input>
+      </div>
+      <div className='input_container-div'>
+        <label>description</label>
+        <input
+          type='text'
+          name='description'
+          onChange={(e) =>{setDescription(e.target.value)}}
+          value={description}
           required={true}
         ></input>
       </div>

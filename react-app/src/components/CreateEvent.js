@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
-import { useHistory } from "react-router-dom";
 import { createEventThunk } from "../store/events";
 
 
@@ -10,11 +9,10 @@ const CreateEvent = ({showCreateEvent, setShowCreateEvent}) => {
 	const [description, setDescription] = useState("");
 	const [event_img, setEventImg] = useState("");
 	const [event_date, setEventDateTime] = useState("");
-	const [private_event, setPrivateEvent] = useState(false);
+
 
 
 	const dispatch = useDispatch();
-	const history = useHistory();
 
 
 	const handleCancel = (e) => {
@@ -70,7 +68,7 @@ const CreateEvent = ({showCreateEvent, setShowCreateEvent}) => {
 				description,
 				event_img,
 				event_date: event_date.split('T').join(" "),
-				private_event
+				private_event: false
 			};
 
 

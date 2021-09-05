@@ -10,7 +10,6 @@ const EditEventForm = ({showEditField, setShowEditField, event}) => {
 	const [description, setDescription] = useState(event.description);
 	const [event_img, setEventImg] = useState(event.event_img);
 	const [event_date, setEventDateTime] = useState(event.event_date);
-	const [private_event, setPrivateEvent] = useState(false);
     const dispatch = useDispatch();
 
 
@@ -54,16 +53,13 @@ const EditEventForm = ({showEditField, setShowEditField, event}) => {
             description,
             event_img,
             event_date: event_date.split('T').join(" "),
-            private_event
+            private_event: false
         };
 
         if (!error) {
             if (data) {
-                const eventData = await dispatch(editEventThunk(data, event.id));
+                await dispatch(editEventThunk(data, event.id));
                 setShowEditField(!showEditField);
-                // if (eventData.errors) {
-				// 	setErrors(eventData.errors)
-				// }
             }
         }
 

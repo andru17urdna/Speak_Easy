@@ -29,12 +29,13 @@
 
 #splash-page_container-div{
     position: relative;
-    top: 5vh;
-    height: 95vh;
+    top: 0;
+    left: 0;
+    height: 100vh;
     width: 100vw;
     display: grid;
     grid-template-columns: repeat(10, 10vw);
-    grid-template-rows: repeat(9, 10vh) 5vh;
+    grid-template-rows: repeat(10, 10vh);
 }
 
 #splash-title_h1{
@@ -76,4 +77,50 @@
     transform: translate(10%);
     animation-name: onLoad-p;
     animation-duration: 7s;
+}
+
+
+.splash-page_nav{
+    /* font-family: 'IM Fell French Canon SC', serif; */
+    font-size: 20px;
+    letter-spacing: 3px;
+    color: black;
+    cursor: pointer;
+    text-decoration: line-through solid transparent 2px;
+    transition: 1s;
+}
+
+.splash-page_nav:hover {
+    text-decoration: line-through solid black 2px;
+}
+
+.splash-page_nav:active{
+    transition: 0s;
+    color: gray;
+    text-decoration: line-through solid gray 2px;
+}
+
+
+#signup_nav{
+    grid-row: 1;
+    grid-column: 10;
+    justify-self: center;
+    align-self: start;
+    padding-top: 10px;
+}
+
+#login_nav{
+    grid-row: 1;
+    grid-column: 10;
+    justify-self: center;
+    align-self: center;
+    padding-top: 10px;
+}
+
+#demo_login{
+    grid-row: 1;
+    grid-column: 10;
+    justify-self: center;
+    align-self: end;
+    padding-top: 10px;
 }

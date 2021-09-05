@@ -1,6 +1,6 @@
-import React, { useEffect } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import { getAllEventsThunk } from '../store/events';
+import React from 'react';
+import { useSelector } from 'react-redux';
+
 import { Route } from "react-router-dom";
 import ProtectedRoute from './auth/ProtectedRoute';
 import HomepageLoggedIn from './HomepageLoggedIn';

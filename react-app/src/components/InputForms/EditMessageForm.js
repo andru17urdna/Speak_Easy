@@ -6,9 +6,7 @@ import { editMessageThunk } from "../../store/messages";
 const EditNotification = ({message, showEditField, setShowEditField}) => {
 	const [errors, setErrors] = useState([]);
 	const [text, setText] = useState(message.text);
-	const [invite, setInvite] = useState(false);
-	const [disabledSubmitButton, setDisabledSubmitButton] = useState(false);
-    const [users, setUsers] = useState([]);
+
 
 
 	const dispatch = useDispatch();
@@ -30,7 +28,7 @@ const EditNotification = ({message, showEditField, setShowEditField}) => {
 		const data = {
 			text,
 			to_user_id: message.to_user_id,
-			invite
+			invite: false
 		};
 
 			if (data) {
@@ -66,7 +64,6 @@ const EditNotification = ({message, showEditField, setShowEditField}) => {
 				<button
 					id=""
 					type="submit"
-					disabled={disabledSubmitButton}
 				>Submit Edit?
 				</button>
 			</form>

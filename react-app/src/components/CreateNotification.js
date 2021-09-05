@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch } from "react-redux";
-import { useHistory } from "react-router-dom";
 import { createMessageThunk } from "../store/messages";
 
 
@@ -8,13 +7,10 @@ const CreateNotification = () => {
 	const [errors, setErrors] = useState([]);
 	const [text, setText] = useState("");
 	const [to_user_id, setToUserId] = useState(null);
-	const [invite, setInvite] = useState(false);
-	const [disabledSubmitButton, setDisabledSubmitButton] = useState(false);
     const [users, setUsers] = useState([]);
 
 
 	const dispatch = useDispatch();
-	const history = useHistory();
 
 
 
@@ -36,22 +32,6 @@ const CreateNotification = () => {
 		}
 
 
-
-
-	// const imageFileEndings = ["pdf", "png", "jpg", "jpeg", "gif"];
-
-
-	// const handleOptionClick = (e) => {
-	// 	setGenres((prevGenres) => [...prevGenres, +e.target.value]);
-	// };
-
-
-
-	// 	const idx = to_user_id.indexOf(+e.target.value);
-	// 	setToUserId((prevToUserId) =>
-	// 		prevToUserId.slice(0, idx).concat(prevToUserId.slice(idx + 1))
-	// 	);
-	// };
 
 
 	const handleSubmit = async (e, error= false) => {
@@ -76,7 +56,7 @@ const CreateNotification = () => {
 				const data = {
 					text,
 					to_user_id,
-					invite
+					invite: false
 				};
 
 				if (data) {
@@ -129,7 +109,6 @@ const CreateNotification = () => {
 					<button
 						id=""
 						type="submit"
-						disabled={disabledSubmitButton}
 					>Create Notification
 					</button>
 					<button onClick={(e)=> handleCancel(e)}>Cancel</button>

@@ -29,19 +29,19 @@ function MultiModal() {
   )} else {
 	return (
 		<>
-			<button className='button'
+			<p id='login_nav' className="splash-page_nav"
 				onClick={() => setShowLoginModal(true)}
-			>Login
-            </button>
+			>&nbsp;&nbsp;Login&nbsp;&nbsp;
+            </p>
 			{showLoginModal && (
 				<Modal code={"login"} onClose={() => setShowLoginModal(false)}>
 					<LoginForm setShowModal={setShowModal} />
 				</Modal>
 			)}
-			<button className='button'
+			<p id='signup_nav' className="splash-page_nav"
 				onClick={() => setShowModal(true)}
-			>Sign Up
-            </button>
+			>&nbsp;&nbsp;Sign Up&nbsp;&nbsp;
+            </p>
 			{showModal && (
 				<Modal code={'signup'} onClose={() => setShowModal(false)}>
 					<SignUpForm setShowModal={setShowModal} />

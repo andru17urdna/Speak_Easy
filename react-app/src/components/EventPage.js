@@ -31,10 +31,10 @@ const EventPage = () => {
         <div id='event-container_div'>
             <div id="event_div">
                 <h1 id='event_title'>{event.event_title}</h1>
-                <img id='event-page-event_img' src={event.event_img}></img>
+                <img id='event-page-event_img' src={event.event_img} alt='Event'></img>
                 <p id='event_description'>{event.description}</p>
-                <p id='event_date'>{event.event_date}</p>
-                <NavLink id='event_creator-link' NavLink to={`/user/${event.user_id}`}>Link to Event Creator </NavLink>
+                <p id='event_date'>Event Date: {event?.event_date?.slice(0, -7)}</p>
+                <NavLink id='event_creator-link' to={`/user/${event.user_id}`}>Link to Event Creator </NavLink>
             </div>
         </div>
     )

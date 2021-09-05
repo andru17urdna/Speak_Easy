@@ -57,6 +57,7 @@
     overflow-y: hidden;
     justify-self: center;
     align-self: center;
+    grid-row: 1;
 }
 
 #profile-events{
@@ -64,13 +65,13 @@
     grid-row: 7/10;
     grid-column: 1/ 11;
     width: 80vw;
-    height: 30vh;
+    height: 31vh;
     justify-self: center;
     align-self: center;
-    overflow: overlay;
+    overflow-x: auto;
     display: grid;
-    grid-template-columns: repeat(10, 15vw);
-    column-gap: 5vw;
+    /* grid-template-columns: repeat(10, 15vw); */
+    column-gap: 3vw;
 }
 
 #profile-events > div:first-child {

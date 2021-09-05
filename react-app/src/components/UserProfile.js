@@ -33,14 +33,14 @@ const UserProfile = () => {
 
         }
 
-	}, [userId, currentUserEvents, dispatch]);
+	}, [userId, currentUserEvents, dispatch, user]);
 
 
     return (
         <div id='profile-page'>
             <div id='user-info-conatiner'>
                 <h1 id='profile_user-id'>{isCurrentUser ? "Your Profile" : profileUser.user_name}</h1>
-                <img id='user-image' src={profileUser.user_img}></img>
+                <img id='user-image' src={profileUser.user_img} alt='Event'></img>
                 <p id='user-description'>{profileUser.description}</p>
             </div>
                 <h1 id='created-events_header'>{isCurrentUser ? "Your" : profileUser.user_name + "'s" } Created Events:</h1>
@@ -48,9 +48,9 @@ const UserProfile = () => {
                {userEvents && Object.values(userEvents).map(event =>(
                    <div className='profile-event-container' key={event.id}>
                        <NavLink to={`/event/${event.id}`}><h1 id='profile_event-title'>{event.event_title}</h1></NavLink>
-                       <img id='user-profile-event-img' src={event.event_img}></img>
+                       <img id='user-profile-event-img' src={event.event_img} alt='event'></img>
                        <p>{event.description}</p>
-                       <p>{event.event_date}</p>
+                       <p>Event Date: {event?.event_date.slice(0, -7)}</p>
                    </div>
 
                ))}

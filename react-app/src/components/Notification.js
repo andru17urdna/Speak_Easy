@@ -18,7 +18,7 @@ const Notification = ({message}) => {
 
         }
       }
-  }, [dispatch])
+  }, [dispatch, user, message.from_user_id])
 
 
   return (
@@ -29,12 +29,12 @@ const Notification = ({message}) => {
 
         {(message.from_user_id === user.id) &&
         <p className='show_edit' onClick={() => setShowEditField((prevState) => !prevState)}>
-              {!showEditField ? <span class="material-icons">edit_note</span>
-                              :<span class="material-icons">close</span>
+              {!showEditField ? <span className="material-icons">edit_note</span>
+                              :<span className="material-icons">close</span>
               }
         </p>
       }
-      <p className='message-delete_button' onClick={() => dispatch(deleteMessageThunk(message.id, message.from_user_id))}><span class="material-icons">delete_forever</span></p>
+      <p className='message-delete_button' onClick={() => dispatch(deleteMessageThunk(message.id, message.from_user_id))}><span className="material-icons">delete_forever</span></p>
         {showEditField && (
             <EditNotification message={message} showEditField={showEditField} setShowEditField={setShowEditField} />
         )}

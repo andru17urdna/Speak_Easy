@@ -22,10 +22,10 @@ const HomepageLoggedIn = () => {
             <div id='user-home-event-cont_div'>
                 {events && events.map(event => (
                     <div className='event-container' key={event.id}>
-                        <NavLink className='event-container_h1' to={`/event/${event.id}`}><h1>{event.event_title}</h1></NavLink>
+                        <h1 className='event-container_h1'><NavLink  to={`/event/${event.id}`}>{event.event_title}</NavLink></h1>
                         <img className='user-home_event-img' src={event.event_img} alt='event'></img>
                         <p>{event.description}</p>
-                        <p>{event.event_date}</p>
+                        <p>Event Date: {event.event_date.slice(0, -7)}</p>
                         <NavLink to={`/user/${event.user_id}`}>{"User-Link"}</NavLink>
                     </div>
                 ))}
@@ -36,7 +36,7 @@ const HomepageLoggedIn = () => {
                 <h1 id='user-home_next-h1'>{events[0].event_title}</h1>
                 <img src={events[0].event_img} id='user-home_next-img' alt='event'></img>
                 <p id='user-home_next-description'>{events[0].description}</p>
-                <p id='user-home_next-date'>Event date: {events[0].event_date}</p>
+                <p id='user-home_next-date'> Event date: {events[0]?.event_date.slice(0, -7)}</p>
                 <NavLink id='user-navlink' to={`/user/${events[0].user_id}`}>{"User-Link"}</NavLink>
             </div>
             )}

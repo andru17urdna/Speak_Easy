@@ -58,6 +58,14 @@
     grid-template-rows: repeat(4,10vh );
 }
 
+.event-card_container > .event-card_title, h2{
+    text-align: center;
+    width: 11vw;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    justify-self: center;
+}
+
 .eventcard_container-editfield{
     border: black solid 2px;
     display: grid;
@@ -70,12 +78,14 @@
 .event-card_title{
     grid-row: 1;
     grid-column: 1/ span end;
-    font-size: 10px;
+    font-size: 20px;
     text-align: center;
 }
 
 .event-card-event_img{
     width: 9vw;
+    height: 9vw;
+    object-fit: cover;
     justify-self: center;
     grid-row: 2/ 4;
     grid-column: 1/ span end;
@@ -86,8 +96,6 @@
     font-size: 15px;
     grid-row: 4;
     grid-column: 1/span end;
-    padding-left: 6px;
-    padding-right: 4px;
 }
 
 .event-card_user-link{
