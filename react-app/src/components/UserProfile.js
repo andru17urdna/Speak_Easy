@@ -27,6 +27,7 @@ const UserProfile = () => {
             (async () => {
                 const user = await dispatch(getASingleUserThunk(userId));
                 setProfileUser(user);
+                console.log(user)
                 const oneUserEvents = await dispatch(getOneUserEventsThunk(userId))
                 setUserEvents(oneUserEvents)
             })();

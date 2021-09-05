@@ -106,7 +106,12 @@
 .from_username{
     grid-row: 1;
     grid-column: 1/ span end;
-    padding-left: 10px;
+    width: 17vw;
+    justify-self: center;
+    text-align: center;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
 }
 
 

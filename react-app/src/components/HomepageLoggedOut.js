@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import { login } from '../store/session';
 import { useDispatch } from 'react-redux';
-import { Link } from 'react-router-dom';
 import MultiModal from './UserMessages/';
 import speakEasyLogo from './easyTRIM.png';
 
@@ -32,15 +31,15 @@ const HomepageLoggedOut = () => {
             </p>
             <MultiModal />
             <div id='footer'>
-              <a className='splash-links' target="_blank" href='https://www.instagram.com/kirakajeevan/' id='logo-artist'>&nbsp;&nbsp;Logo Artist&nbsp;&nbsp;</a>
+              <a className='splash-links' target="_blank" rel="noreferrer" href='https://www.instagram.com/kirakajeevan/' id='logo-artist'>&nbsp;&nbsp;Logo Artist&nbsp;&nbsp;</a>
             <div onMouseEnter={() => setShowProjects(true)}
                  onMouseLeave={() => setShowProjects(false)} id='project_div'>
 
                 <p>Andru's Projects</p>
               {showProjects && (
                 <>
-                <a className='splash-links' target="_blank" href="https://shuffled.herokuapp.com/">&nbsp;&nbsp;Shuffled&nbsp;&nbsp;</a>
-                <a className='splash-links' target="_blank" href="https://spot-a-cloud.herokuapp.com/">&nbsp;&nbsp;Waveform&nbsp;&nbsp;</a>
+                <a className='splash-links' target="_blank" rel="noreferrer" href="https://shuffled.herokuapp.com/">&nbsp;&nbsp;Shuffled&nbsp;&nbsp;</a>
+                <a className='splash-links' target="_blank" rel="noreferrer" href="https://spot-a-cloud.herokuapp.com/">&nbsp;&nbsp;Waveform&nbsp;&nbsp;</a>
                 </>
               )}
             </div>
@@ -49,8 +48,8 @@ const HomepageLoggedOut = () => {
               <p>About Speak Easy</p>
               {showAboutSite && (
                 <>
-                  <a href='https://www.oldwestiron.com/blogs/news/everything-you-need-to-know-about-speakeasy-grills-and-doors' className='splash-links'>About Logo</a>
-                  <a href='https://github.com/andru17urdna/Speak_Easy' className='splash-links'>Github Repo</a>
+                  <a href='https://www.oldwestiron.com/blogs/news/everything-you-need-to-know-about-speakeasy-grills-and-doors' target="_blank" rel="noreferrer" className='splash-links'>About Logo</a>
+                  <a href='https://github.com/andru17urdna/Speak_Easy' target="_blank" rel="noreferrer" className='splash-links'>Github Repo</a>
                 </>
               )}
             </div>
@@ -60,8 +59,8 @@ const HomepageLoggedOut = () => {
                 <p>About Andru</p>
               {showAboutMe && (
               <>
-                <a href='https://www.linkedin.com/in/andrew-watkins-533280173/' target="_blank" className='splash-links'>&nbsp;&nbsp;LinkedIn&nbsp;&nbsp;</a>
-                <a href='https://github.com/andru17urdna' target="_blank" className='splash-links'>&nbsp;&nbsp;Github&nbsp;&nbsp;</a>
+                <a href='https://www.linkedin.com/in/andrew-watkins-533280173/' target="_blank" rel="noreferrer" className='splash-links'>&nbsp;&nbsp;LinkedIn&nbsp;&nbsp;</a>
+                <a href='https://github.com/andru17urdna' target="_blank" rel="noreferrer" className='splash-links'>&nbsp;&nbsp;Github&nbsp;&nbsp;</a>
               </>
               )}
             </div>

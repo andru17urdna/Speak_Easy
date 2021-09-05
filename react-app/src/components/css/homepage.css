@@ -127,6 +127,7 @@
     overflow: hidden;
     text-overflow: ellipsis;
     justify-self: center;
+    white-space: nowrap;
 }
 
 .event-container_h1{
