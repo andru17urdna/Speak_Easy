@@ -15,8 +15,8 @@ const SignUpForm = () => {
   const [availableEmail, setAvailableEmail] = useState('');
   const [password, setPassword] = useState('');
   const [repeatPassword, setRepeatPassword] = useState('');
-  const [user_img, setUserImg] =useState('');
-  const [description, setDescription] =useState('')
+  const [user_img, setUserImg] =useState('https://spot-a-cloud.s3.us-east-2.amazonaws.com/AWS-Bucket/Profile-Photos/Seeder1-BlankPhoto.png');
+  const [description, setDescription] =useState('User description has not been added yet.')
 
   const user = useSelector(state => state.session.user);
   const dispatch = useDispatch();
@@ -36,7 +36,7 @@ const SignUpForm = () => {
       }
 
       if (!error) {
-        const data = await dispatch(signUp(username, email, password));
+        const data = await dispatch(signUp(username, email, password, user_img, description));
         if (data) {
           setErrors(data)
         }
@@ -163,17 +163,14 @@ const SignUpForm = () => {
           type='text'
           name='user_image'
           onChange={(e) => setUserImg(e.target.value)}
-          value={user_img}
         ></input>
       </div>
       <div className='input_container-div'>
-        <label>description</label>
+        <label>Description</label>
         <input
           type='text'
           name='description'
           onChange={(e) =>{setDescription(e.target.value)}}
-          value={description}
-          required={true}
         ></input>
       </div>
       <button id='sign-up_button' type='submit'>Sign Up</button>

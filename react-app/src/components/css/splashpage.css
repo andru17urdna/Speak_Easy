@@ -27,6 +27,16 @@
 }
 
 
+@keyframes onLoad-img {
+    0%{
+        opacity: 0;
+    }
+    100%{
+        opacity: 1;
+    }
+}
+
+
 #splash-page_container-div{
     position: relative;
     top: 0;
@@ -47,6 +57,7 @@
     animation-name: onLoad;
     animation-duration: 4s;
     text-decoration: line-through solid black 2px;
+    z-index: 3;
 }
 
 #splash-page_create-p{
@@ -57,6 +68,7 @@
     animation-name: onLoad-p;
     animation-duration: 5s;
     color: black;
+    z-index: 3;
 }
 
 #splash-page_send{
@@ -67,6 +79,7 @@
     transform: translate(40%);
     animation-name: onLoad-p;
     animation-duration: 6s;
+    z-index: 3;
 }
 
 #splash-page_account{
@@ -77,16 +90,18 @@
     transform: translate(10%);
     animation-name: onLoad-p;
     animation-duration: 7s;
+    z-index: 3;
 }
 
 
 .splash-page_nav{
-    /* font-family: 'IM Fell French Canon SC', serif; */
     font-size: 20px;
     letter-spacing: 3px;
     color: black;
     cursor: pointer;
     text-decoration: line-through solid transparent 2px;
+    animation-name: onLoad-p;
+    animation-duration: 7s;
     transition: 1s;
 }
 
@@ -100,6 +115,15 @@
     text-decoration: line-through solid gray 2px;
 }
 
+#speak-easy_logo{
+    height: 70vh;
+    grid-row: 2;
+    grid-column: 3/ 8;
+    justify-self: center;
+    transform: translate(-4%, -3.5%);
+    animation-name: onLoad-img;
+    animation-duration: 1s;
+}
 
 #signup_nav{
     grid-row: 1;
@@ -123,4 +147,73 @@
     justify-self: center;
     align-self: end;
     padding-top: 10px;
+}
+
+
+#footer{
+    grid-row: 10;
+    grid-column: 1/ span end;
+    height: 7.5vh;
+    align-self: end;
+    display: grid;
+    grid-template-columns: repeat(10, 10vw);
+}
+
+#logo-artist{
+    grid-column: 1;
+    justify-self: center;
+    animation-name: onLoad-p;
+    animation-duration: 7s;
+}
+
+#project_div{
+    display: grid;
+    grid-column: 4;
+    justify-self: center;
+    animation-name: onLoad-p;
+    animation-duration: 7s;
+}
+
+#project_div > a{
+    justify-self: center;
+}
+
+#about-me_div{
+    display: grid;
+    grid-column: 10;
+    justify-self: center;
+    animation-name: onLoad-p;
+    animation-duration: 7s;
+}
+#about-me_div > a{
+    justify-self: center;
+}
+
+#about-site_div{
+    display: grid;
+    grid-column: 7;
+    justify-self: center;
+    animation-name: onLoad-p;
+    animation-duration: 7s;
+}
+
+#about-site_div > a{
+    justify-self: center;
+}
+
+
+
+.splash-links{
+    text-decoration: line-through solid transparent 1px;
+    transition: .7s;
+}
+
+.splash-links:hover{
+    text-decoration: line-through solid black 1px;
+}
+
+
+.splash-links:active{
+    transition: 0s;
+    color: gray;
 }

@@ -65,7 +65,9 @@ def sign_up():
         user = User(
             username=form.data['username'],
             email=form.data['email'],
-            password=form.data['password']
+            password=form.data['password'],
+            user_img=form.data['user_img'],
+            description=form.data['description']
         )
         db.session.add(user)
         db.session.commit()
@@ -80,6 +82,3 @@ def unauthorized():
     Returns unauthorized JSON when flask-login authentication fails
     """
     return {'errors': ['Unauthorized']}, 401
-
-
-
