@@ -9,6 +9,24 @@
 
 }
 
+#logo-home_nav{
+    justify-self: center;
+    align-self: center;
+}
+
+#logo-home_nav > span{
+    font-size: 40px;
+    color:white;
+}
+
+#logo-home_nav > span:hover{
+    color:rgb(216, 129, 129)
+}
+
+#logo-home_nav > span:active{
+    color: rgb(98, 98, 98);
+}
+
 .dropdown{
     position: relative;
     padding-left: 10px;

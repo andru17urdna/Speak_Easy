@@ -2,8 +2,8 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
 import LogoutButton from './auth/LogoutButton';
-import { useSelector, useDispatch } from 'react-redux';
-import { login } from '../store/session';
+import { useSelector } from 'react-redux';
+import speakEasyLogo from './SpeakEasyLogo.png'
 
 import "./css/navbar.css";
 import MultiModal from './UserMessages/'
@@ -19,15 +19,14 @@ const NavBar = () => {
 
   return (
     <nav id='nav-container'>
-      <NavLink to='/'>Home</NavLink>
+      <NavLink id='logo-home_nav' to='/'><span className="material-icons">home</span></NavLink>
         <div className="dropdown">
           {user && (<span>{user.user_name}<span className="material-icons">
                 expand_more</span></span>)}
         <div className='dropdown-content'>
         <ul>
           <li className='nav_li'>
-            <NavLink className='nav_a' to='/' exact={true} activeClassName='active'>
-              Home
+            <NavLink className='nav_a' to='/' exact={true} activeClassName='active'>Home
             </NavLink>
           </li>
           <li className='nav_li'>

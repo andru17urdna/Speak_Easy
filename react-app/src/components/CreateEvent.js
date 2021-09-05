@@ -32,22 +32,22 @@ const CreateEvent = ({showCreateEvent, setShowCreateEvent}) => {
 
 		if (event_title.length < 10) {
 			error= true;
-			setErrors(prevState => [...prevState, "Event title is too short."])
+			setErrors(prevState => [...prevState, "Event title must be over 10 char."])
 		}
 
         if (event_title.length > 50) {
             error= true;
-            setErrors(prevState => [...prevState, "Event title is too long"])
+            setErrors(prevState => [...prevState, "Event title must be under 50 char."])
         }
 
 		if (description.length < 20) {
 			error = true;
-			setErrors(prevState => [...prevState, "Description is too short."])
+			setErrors(prevState => [...prevState, "Description must be over 20 char."])
 		}
 
 		if (description.length > 75) {
 			error = true;
-			setErrors(prevState => [...prevState, "Description is too long."])
+			setErrors(prevState => [...prevState, "Description must be under 255 char."])
 		}
 
 		if (event_img.length > 1000) {

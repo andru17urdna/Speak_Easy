@@ -44,6 +44,10 @@ if (user) {
                 <EventTowerCard event={event} />
             </div>
           ))}
+        {!userEvents.length && (
+            !showCreateEvent ? <p id='no-events_message'>Add Events Above to see them Populate here</p> : <></>
+        )}
+
       </div>
   )} else {
       return (
