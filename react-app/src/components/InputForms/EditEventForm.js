@@ -9,8 +9,9 @@ const EditEventForm = ({showEditField, setShowEditField, event}) => {
 	const [event_title, setEventTitle] = useState(event.event_title);
 	const [description, setDescription] = useState(event.description);
 	const [event_img, setEventImg] = useState(event.event_img);
-	const [event_date, setEventDateTime] = useState(event.event_date);
+	const [event_date, setEventDateTime] = useState(new Date(event.event_date).toISOString().slice(0,-1));
     const dispatch = useDispatch();
+
 
 
 	const handleSubmit = async (e, error= false) => {

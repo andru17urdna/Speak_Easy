@@ -48,6 +48,30 @@
     grid-template-rows: repeat(10, 10vh);
 }
 
+@media only screen and (min-width: 1367px) {
+    #splash-title_h1{
+        white-space: nowrap;
+    }
+
+    #footer{
+        height: 7.5vh;
+    }
+}
+
+
+@media only screen and (max-width: 1366px) {
+
+    #splash-title_h1{
+        white-space: nowrap;
+        transform: translate(5%, -6%);
+    }
+
+    #footer{
+        height: 9vh;
+    }
+}
+
+
 #splash-title_h1{
     font-family: 'IM Fell French Canon SC', serif;
     font-size: 40px;
@@ -67,6 +91,7 @@
     transform: translate(50%);
     animation-name: onLoad-p;
     animation-duration: 5s;
+    white-space: nowrap;
     color: black;
     z-index: 3;
 }
@@ -76,6 +101,7 @@
     grid-column: 7;
     align-self: center;
     font-size: 20px;
+    white-space: nowrap;
     transform: translate(40%);
     animation-name: onLoad-p;
     animation-duration: 6s;
@@ -87,6 +113,7 @@
     grid-column: 7/9;
     align-self: end;
     font-size: 20px;
+    white-space: nowrap;
     transform: translate(10%);
     animation-name: onLoad-p;
     animation-duration: 7s;
@@ -128,24 +155,30 @@
 #signup_nav{
     grid-row: 1;
     grid-column: 10;
-    justify-self: center;
     align-self: start;
+    white-space: nowrap;
+    line-height: 13px;
+    justify-self: center;
     padding-top: 10px;
 }
 
 #login_nav{
     grid-row: 1;
     grid-column: 10;
-    justify-self: center;
     align-self: center;
+    white-space: nowrap;
+    line-height: 13px;
+    justify-self: center;
     padding-top: 10px;
 }
 
 #demo_login{
     grid-row: 1;
     grid-column: 10;
-    justify-self: center;
     align-self: end;
+    white-space: nowrap;
+    line-height: 13px;
+    justify-self: center;
     padding-top: 10px;
 }
 
@@ -153,7 +186,6 @@
 #footer{
     grid-row: 10;
     grid-column: 1/ span end;
-    height: 7.5vh;
     align-self: end;
     display: grid;
     grid-template-columns: repeat(10, 10vw);

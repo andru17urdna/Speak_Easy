@@ -30,6 +30,7 @@ const CreateEvent = ({showCreateEvent, setShowCreateEvent}) => {
 		e.preventDefault();
 		setErrors([]);
 
+
 		if (event_title.length < 10) {
 			error= true;
 			setErrors(prevState => [...prevState, "Event title must be over 10 char."])

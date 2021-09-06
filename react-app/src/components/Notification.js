@@ -25,7 +25,7 @@ const Notification = ({message}) => {
       <>
         <h2 className='from_username'> {message.from_user_id === user.id? `To: ${message.to_username}`: `From: ${message.from_username}`}</h2>
         <p className='message_text'>{message.text}</p>
-        <p className='message_sent'>Sent: {message.created_at}</p>
+        <p className='message_sent'>Sent: {message.created_at.slice(0, -7)}</p>
 
         {(message.from_user_id === user.id) &&
         <p className='show_edit' onClick={() => setShowEditField((prevState) => !prevState)}>

@@ -31,7 +31,11 @@
 
 
 #event-page-event_img{
+    object-fit: cover;
+    background-image: url(https://eagle-sensors.com/wp-content/uploads/unavailable-image.jpg);
+    background-size: cover;
     width: 10vw;
+    height: 10vw;
     grid-row: 1 /4;
     align-self: center;
     grid-column: 2;

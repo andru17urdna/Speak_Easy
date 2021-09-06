@@ -37,6 +37,9 @@
 
 
 #user-image{
+    object-fit: cover;
+    background-image: url(https://eagle-sensors.com/wp-content/uploads/unavailable-image.jpg);
+    background-size: cover;
     width: 9vw;
     grid-column: 1/3;
     grid-row: 2/4;
@@ -88,4 +91,8 @@
 
 #user-profile-event-img{
     width: 6vw;
+    height: 6vw;
+    object-fit: cover;
+    background-image: url(https://eagle-sensors.com/wp-content/uploads/unavailable-image.jpg);
+    background-size: cover;
 }

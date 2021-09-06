@@ -47,7 +47,6 @@ const SignUpForm = () => {
   const checkUsername = async (e) => {
     const data = await dispatch(usernameCheck(e))
       if (data.message) {
-        console.log(data.message)
         setAvailableUsername(data.message)
           if(data.message === "User Name is already in use."){
             setUserNameColor({color:'red'})

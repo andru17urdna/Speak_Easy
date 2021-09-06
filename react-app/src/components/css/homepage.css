@@ -42,6 +42,7 @@
     display: grid;
     grid-template-columns: repeat(5, 10vw);
     grid-template-rows: repeat(4, 10vh);
+
 }
 
 #user-navlink{
@@ -75,6 +76,8 @@
 }
 
 .user-home_event-img{
+    background-image: url(https://eagle-sensors.com/wp-content/uploads/unavailable-image.jpg);
+    background-size: cover;
     width: 5vw;
     height: 5vw;
     object-fit: cover;
@@ -91,10 +94,14 @@
 
 #user-home_next-img{
     width: 15vw;
+    height: 15vw;
     grid-row: 1/ span end;
     grid-column: 1/ 3;
     justify-self: center;
     align-self: center;
+    object-fit: cover;
+    background-image: url(https://eagle-sensors.com/wp-content/uploads/unavailable-image.jpg);
+    background-size: cover;
 }
 
 #user-home_next-description{

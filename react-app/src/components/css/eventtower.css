@@ -83,6 +83,8 @@
 }
 
 .event-card-event_img{
+    background-image: url(https://eagle-sensors.com/wp-content/uploads/unavailable-image.jpg);
+    background-size: cover;
     width: 9vw;
     height: 9vw;
     object-fit: cover;
@@ -201,6 +203,7 @@
 #add-event_h2{
     margin-top: -1vh;
     justify-self: center;
+    height: 4vh;
 }
 
 #create-event_form{
