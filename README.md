@@ -179,8 +179,8 @@ print('add code snippet 1 here')
 ## Contact
 
 ### Andru
-<a href="https://www.linkedin.com/in/{linkedin-handle}/"><img src="./readme-assets/logos/linkedin-logo.png" height="28" align="middle" /></a>
-<a href="https://angel.co/u/{angel-list-handle}"><img src="./readme-assets/logos/angellist-logo.png" height="28" align="middle" /></a>
+<a href="https://www.linkedin.com/in/andrew-watkins-533280173/"><img src="./readme-assets/logos/linkedin-logo.png" height="28" align="middle" /></a>
+<!-- <a href="https://angel.co/u/{angel-list-handle}"><img src="./readme-assets/logos/angellist-logo.png" height="28" align="middle" /></a> -->
 <a href="https://github.com/andru17urdna"><img src="./readme-assets/logos/github-logo.png" height="38" align="middle" /></a>
 
 
