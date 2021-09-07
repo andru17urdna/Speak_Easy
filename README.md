@@ -1,5 +1,5 @@
 <p align='center'>
-  <img src='./react-app/src/assets/images/logo.png' height='200px'>
+  <img src='https://i.imgur.com/2EBU8e5.png' height='200px'>
 </p>
 
 # Speak-Easy
@@ -13,10 +13,11 @@ Speak-Easy is a simple event planning website. You can create events, as well as
 | ----------------- |
 | 1. [Features](#features) |
 | 2. [Installation](#installation) |
-| 3. [Technical Implementation Details](#technical-implementation-details) |
-| 4. [Future Features](#future-features) |
-| 5. [Contact](#contact) |
-| 6. [Special Thanks](#special-thanks) |
+| 3. [Future Features](#future-features) |
+| 4. [Contact](#contact) |
+| 5. [Special Thanks](#special-thanks) |
+
+<!-- | 3. [Technical Implementation Details](#technical-implementation-details) | -->
 
 <br/><br/>
 ## Technologies
@@ -39,52 +40,41 @@ Speak-Easy is a simple event planning website. You can create events, as well as
 <br/>
 
 ### Sign In and Sign Up
-![Sign Up](./readme-assets/images/signup.jpg)
-![Login](./readme-assets/images/login.jpg)
+![Sign Up](https://i.imgur.com/7tAbg7s.jpg)
+![Login](https://i.imgur.com/UeLmChk.jpg)
 
 ### Logged In Home Page
 Speak-Easy feed displays all Events
-![Feed Page](./readme-assets/images/feed.jpg)
+![Feed Page](https://i.imgur.com/y4M9Qlb.jpg)
 
 ### View Events
 Easily view Events on the Event page
-![Events Page](./readme-assets/images/Events-page.jpg)
+![Events Page](https://i.imgur.com/OLzJxqc.jpg)
 
 ### Add Events
-Add a new Events to the database
-![Add Events](./readme-assets/images/Events-add.jpg)
-Cancel adding Events
-![Cancel Add Events](./readme-assets/images/Events-add-cancel.jpg)
+Add a new Events to the database or Cancel adding Events
+![Add Events](https://i.imgur.com/70xfdO7.jpg)
 
 ### Create, Read, Update, Delete Events
 View Events
-![Messages](./readme-assets/images/Messages.png)
+![Edit Events](https://i.imgur.com/oW5RjRB.jpg)
 Edit and Add Events in the database
-![Edit Messages](./readme-assets/images/Messages-edit.png)
-![Add Messages](./readme-assets/images/Messages-add.png)
+
 
 
 
 ### Notification/ Messages Modal
 Speak-Easy Messages/ Notifications can be found all in one place
-![Feed Page](./readme-assets/images/feed.jpg)
+* Add a new Messages to the database
+* Cancel adding Events
+![Messages Modal](https://i.imgur.com/Hbumt72.jpg)
 
-### View Messages
-Easily view Messages on the Messages Modal
-![Events Page](./readme-assets/images/Events-page.jpg)
-
-### Add Messages
-Add a new Events to the database
-![Add Events](./readme-assets/images/Events-add.jpg)
-Cancel adding Events
-![Cancel Add Events](./readme-assets/images/Events-add-cancel.jpg)
 
 ### Create, Read, Update, Delete Messages/ Notifications
-View Messages/ Notifications
-![Messages](./readme-assets/images/Messages.png)
+
 Edit and Add Messages/ Notifications in the database
-![Edit Messages](./readme-assets/images/Messages-edit.png)
-![Add Messages](./readme-assets/images/Messages-add.png)
+![Edit Messages](https://i.imgur.com/3KO8IMc.jpg)
+
 
 <br/><br/>
 
