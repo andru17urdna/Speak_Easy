@@ -36,6 +36,8 @@ def seed_users():
     db.session.add(turbo)
     db.session.add(rick)
 
+    demo.friends.extend([marnie, bobbie])
+
     db.session.commit()
 
 
