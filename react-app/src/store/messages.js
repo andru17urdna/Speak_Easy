@@ -53,7 +53,6 @@ export const getAllMessagesThunk = () => async (dispatch) => {
 
 
 export const createMessageThunk = (payload) => async (dispatch) => {
-
     const response = await fetch("/api/messages/", {
         method: "POST",
         headers: {

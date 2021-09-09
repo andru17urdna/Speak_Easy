@@ -1,7 +1,7 @@
 import { dropEvent } from "./events";
 import { dropUserInfo } from "./UserInfo";
 import { dropMessage } from "./messages";
-
+import { createMessageThunk } from "./messages";
 
 // constants
 const SET_USER = 'session/SET_USER';
@@ -116,8 +116,7 @@ export const signUp = (username, email, password, user_img, description) => asyn
 }
 
 
-export const addFriendThunk = (id) => async (dispatch) => {
-  console.log('thunk')
+export const addFriendThunk = (id, currentUser) => async (dispatch) => {
   const response = await fetch(`/api/users/add-friend`, {
       method: 'POST',
       headers: {
@@ -128,11 +127,19 @@ export const addFriendThunk = (id) => async (dispatch) => {
     const data = await response.json()
 
     if (data.success) {
-      dispatch(addFriend(id))
+      const addedNoti = {
+        text: `${currentUser} added you as a friend. Say hello!`,
+        to_user_id: id,
+        invite: false
+      }
+      
+      await dispatch(addFriend(id))
+      await dispatch(createMessageThunk(addedNoti))
+
       return data.success
     }
     if (data.error)
-    return data.error[0]
+    return data
 }
 
 export const usernameCheck = (username) => async (dispatch) => {
