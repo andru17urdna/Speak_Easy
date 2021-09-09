@@ -23,6 +23,7 @@ class User(db.Model, UserMixin):
     user_img = db.Column(db.String(
         500), nullable=False, default="https://spot-a-cloud.s3.us-east-2.amazonaws.com/AWS-Bucket/Profile-Photos/Seeder1-BlankPhoto.png")
     description = db.Column(db.String(255))
+    # user_settings = db.Column(db.ARRAY(db.String))
 
     friends = db.relationship("User", secondary=friendship,
                               primaryjoin = id==friendship.c.user_a_id,
@@ -32,14 +33,6 @@ class User(db.Model, UserMixin):
     message_from = db.relationship("Message", backref="message_from", lazy=True, foreign_keys = '[messages.c.from_user_id]')
     message_to = db.relationship("Message", backref="message_to", lazy=True, foreign_keys = '[messages.c.to_user_id]')
 
-
-    def add_friend(self, friend):
-        if friend not in self.friends:
-            self.friends.append(friend)
-            friend.friends.append(self)
-            return
-        else:
-            return {'error': ['You are already friends.']}
 
 
     def remove_friend(self, friend):
@@ -70,6 +63,7 @@ class User(db.Model, UserMixin):
             'user_img': self.user_img,
             'description': self.description,
             'friends': [friend.id for friend in self.friends],
+            # 'user_settings': self.user_settings
         }
 
 

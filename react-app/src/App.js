@@ -12,6 +12,7 @@ import { authenticate } from './store/session';
 import Homepage from './components/Homepage';
 import UserProfile from './components/UserProfile';
 import EventPage from './components/EventPage';
+import FriendRequest from './components/FriendRequest';
 
 
 function App() {
@@ -36,6 +37,9 @@ function App() {
       <Switch>
         <Route path='/login' exact={true}>
           <LoginForm />
+        </Route>
+        <Route path='/friend'>
+          <FriendRequest />
         </Route>
         <Route path='/sign-up' exact={true}>
           <SignUpForm />

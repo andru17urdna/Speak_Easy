@@ -10,7 +10,7 @@ const GET_ALL_MESSAGES = "messages/GET_ALL_MESSAGES"
 const CREATE_MESSAGE = "messages/CREATE_MESSAGE"
 const DELETE_MESSAGE = "messages/DELETE_MESSAGE"
 const DROP_MESSAGES = "messages/DROP_MESSAGES"
-
+const ADD_FRIEND = "notifications/ADD_FRIEND"
 
 
 const getAllMessages = (messages) => ({
@@ -29,9 +29,15 @@ const deleteMessage = (id) => ({
     payload: id
 })
 
+const addFriend = (id) => ({
+    type: ADD_FRIEND,
+    payload: id
+})
+
 const dropMessages = () => ({
     type: DROP_MESSAGES
 })
+
 
 
 export const getAllMessagesThunk = () => async (dispatch) => {
@@ -110,6 +116,20 @@ export const deleteMessageThunk = (id, userId) => async (dispatch) => {
         }
     }
 }
+
+
+export const addFriendThunk = (id) => async (dispatch) => {
+    console.log('thunk')
+    const response = await fetch(`/api/users/add-friend`, {
+        method: 'PATCH',
+        headers: {
+            'Content-type': 'application/json',
+        },
+        body: JSON.stringify({id})
+    })
+    console.log(response.json())
+}
+
 
 export const dropMessage = () => async (dispatch) => {
     dispatch(dropMessages())

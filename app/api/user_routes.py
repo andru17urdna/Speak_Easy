@@ -38,3 +38,29 @@ def check_email():
         return {"message":'Email is already in use.'}
     else:
         return {"message": 'Email is not in use'}
+
+
+@user_routes.route('/add-friend', methods=['PATCH'])
+def add_friend():
+    print('in add friend')
+    friend_json = request.get_json()
+    # print(friend_json['id'], "=================")
+    friend = User.query.filter(User.id == friend_json["id"]).first()
+
+    print(current_user.friends[1].to_dict(), "================")
+    print(friend.id, '-----------------------')
+    if friend not in current_user.friends:
+        print('success')
+        current_user.friends.append(friend.id)
+        friend.friends.append(current_user.id)
+        return
+    else:
+        print('busted dawg')
+        return {'error': ['You are already friends.']}
+
+
+
+@user_routes.route('/remove-friend', methods=['PATCH'])
+def remove_friend():
+    user = request.get_json()
+    print(user)
