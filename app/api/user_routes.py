@@ -47,13 +47,11 @@ def add_friend():
     user = User.query.get(current_user.id)
 
     if friend.id not in user.to_dict()['friends']:
-        print('success')
         user.friends.append(friend)
         friend.friends.append(user)
         db.session.commit()
-        return {}
+        return {'success': f'You are now friends with {friend.username}'}
     else:
-        print('busted dawg')
         return {'error': ['You are already friends.']}
 
 
