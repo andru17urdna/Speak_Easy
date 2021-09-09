@@ -121,7 +121,7 @@ export const deleteMessageThunk = (id, userId) => async (dispatch) => {
 export const addFriendThunk = (id) => async (dispatch) => {
     console.log('thunk')
     const response = await fetch(`/api/users/add-friend`, {
-        method: 'PATCH',
+        method: 'POST',
         headers: {
             'Content-type': 'application/json',
         },
