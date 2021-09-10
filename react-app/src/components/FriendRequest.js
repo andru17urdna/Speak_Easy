@@ -12,7 +12,7 @@ const FriendRequest = () => {
     const [errors, setErrors] = useState([]);
 
     const user = useSelector(state => state.session.user)
-    console.log(user)
+    
 
     const handleFriendRequest = async(e) =>{
         e.preventDefault()
