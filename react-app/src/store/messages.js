@@ -29,9 +29,12 @@ const deleteMessage = (id) => ({
     payload: id
 })
 
+
+
 const dropMessages = () => ({
     type: DROP_MESSAGES
 })
+
 
 
 export const getAllMessagesThunk = () => async (dispatch) => {
@@ -50,7 +53,6 @@ export const getAllMessagesThunk = () => async (dispatch) => {
 
 
 export const createMessageThunk = (payload) => async (dispatch) => {
-
     const response = await fetch("/api/messages/", {
         method: "POST",
         headers: {
@@ -110,6 +112,10 @@ export const deleteMessageThunk = (id, userId) => async (dispatch) => {
         }
     }
 }
+
+
+
+
 
 export const dropMessage = () => async (dispatch) => {
     dispatch(dropMessages())

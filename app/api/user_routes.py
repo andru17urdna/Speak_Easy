@@ -1,6 +1,6 @@
 from flask import Blueprint, jsonify, request
 from flask_login import login_required
-from app.models import User
+from app.models import db, User
 from flask_login import current_user
 
 user_routes = Blueprint('users', __name__)
@@ -38,3 +38,25 @@ def check_email():
         return {"message":'Email is already in use.'}
     else:
         return {"message": 'Email is not in use'}
+
+
+@user_routes.route('/add-friend', methods=['POST'])
+def add_friend():
+    friend_id = request.get_json()['id']
+    friend = User.query.get(friend_id)
+    user = User.query.get(current_user.id)
+
+    if friend.id not in user.to_dict()['friends']:
+        user.friends.append(friend)
+        friend.friends.append(user)
+        db.session.commit()
+        return {'success': f'You are now friends with {friend.username}'}
+    else:
+        return {'error': ['You are already friends.']}
+
+
+
+@user_routes.route('/remove-friend', methods=['PATCH'])
+def remove_friend():
+    user = request.get_json()
+    print(user)
