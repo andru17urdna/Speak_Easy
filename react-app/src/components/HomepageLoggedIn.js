@@ -11,9 +11,9 @@ const HomepageLoggedIn = () => {
         dispatch(getAllEventsThunk())
     }, [dispatch]);
 
-    const user = useSelector(state => state.session.user)
-    const events = useSelector((state) => Object.values(state.events).reverse())
-
+    const user = useSelector(state => state.session.user);
+    const events = useSelector((state) => Object.values(state.events).reverse());
+    const friends = useSelector(state => state.session.user.friends);
 
     return (
         <div id='user-home-container_div'>

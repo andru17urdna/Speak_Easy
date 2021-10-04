@@ -33,15 +33,6 @@ const UserMessages = () =>{
                   </div>
                 ))}
             </div>
-            <div id='create_notification'><CreateNotification /></div>
-                <h2 id='h2_noti-from-you'>Sent Notifications: </h2>
-              <div id='noti_from_user'>
-                {messagesFromCurrentUser && Object.values(messagesFromCurrentUser).reverse().map(message => (
-                  <div className='message-container' key={message.id}>
-                    <Notification message={message} />
-                  </div>
-                ))}
-              </div>
           </>
     )} else {
         return (

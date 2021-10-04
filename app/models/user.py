@@ -74,6 +74,7 @@ class Message(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     text = db.Column(db.String(1000), nullable=False)
     invite = db.Column(db.Boolean, default=False)
+    type = db.Column(db.Integer, default= 0)
     to_user_id = db.Column(db.Integer, db.ForeignKey('users.id'), nullable=False, index=True)
     from_user_id = db.Column(db.Integer, db.ForeignKey('users.id'), nullable=False, index=True)
     created_at = db.Column(db.DateTime(timezone=True),
@@ -86,6 +87,7 @@ class Message(db.Model):
             'id': self.id,
             'text': self.text,
             'invite': self.invite,
+            'type': self.type,
             'to_user_id': self.to_user_id,
             'from_user_id': self.from_user_id,
             'from_username': self.message_from.username,
